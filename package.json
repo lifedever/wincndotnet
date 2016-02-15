@@ -1,0 +1,20 @@
+{
+  "name": "wincndotnet",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "mongoose": "^4.4.3",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0",
+    "swig": "^1.4.2",
+    "utility": "^1.6.0"
+  }
+}
