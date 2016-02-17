@@ -88,7 +88,7 @@ router.get('/articles/delete/:id', function (req, res, next) {
 });
 
 router.get('/wx', function (req, res, next) {
-    wxService.find(function(err, wx) {
+    wxService.findRobot(function(err, robots) {
         if(err) {
             next(err);
         }else{
@@ -96,7 +96,7 @@ router.get('/wx', function (req, res, next) {
                 {
                     menu: 'dashboard',
                     subMenu: 'wx',
-                    wx: wx[0]
+                    robots: robots
                 }
             );
         }
@@ -104,15 +104,33 @@ router.get('/wx', function (req, res, next) {
 });
 
 router.post('/wx', function (req, res, next) {
-    var wx = req.body;
-    wxService.save(wx, function(err, wx) {
+    var robot = req.body;
+
+    wxService.findRobot({key: robot.key}, function (err, doc) {
         if (err) {
             next(err);
         } else {
-            req.flash(config.constant.flash.success, '保存成功!');
-            res.redirect('/dashboard/wx');
+            if(doc.length == 0){
+                wxService.createRobot(robot, function (err, doc) {
+                    if (err) {
+                        next(err);
+                    } else {
+                        res.redirect('/dashboard/wx');
+                    }
+                });
+            }else{
+                req.flash(config.constant.flash.error, '规则已存在!');
+                res.redirect('/dashboard/wx');
+            }
         }
-    })
+    });
+});
+
+router.get('/wx/delete/:id', function (req, res, next) {
+    var id = req.params.id;
+    wxService.removeRobot({_id: id}, function (err, doc) {
+        res.redirect('/dashboard/wx');
+    });
 });
 
 module.exports = router;
