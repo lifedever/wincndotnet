@@ -10,11 +10,12 @@ var mongoose = require('mongoose');
 var swig = require('swig');
 
 var authority = require('./lib/authority');
+var swigExtends = require('./lib/swig.extends');
+
 var config = require('./config');
 var routes = require('./routes/index.route');
 var users = require('./routes/users.route');
 var dashboard = require('./routes/dashboard.route');
-
 var app = express();
 
 mongoose.connect(config.db.url);
@@ -25,6 +26,8 @@ app.engine('swig', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'swig');
 app.set('view cache', false);
+
+swigExtends(swig);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

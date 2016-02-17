@@ -32,7 +32,8 @@ router.post('/login', function (req, res, next) {
             if (dbUser && userService.validatePassword(user.password, dbUser.password)) {
                 req.flash(config.constant.flash.success, '欢迎回来, ' + user.username + '!');
                 req.session.user = dbUser;
-                res.redirect('/');
+
+                res.redirect(req.session.originalUrl ? req.session.originalUrl : '/');
             } else {
                 req.flash(config.constant.flash.error, '用户名或密码错误!');
                 res.redirect('/login');

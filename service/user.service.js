@@ -15,5 +15,11 @@ module.exports = {
     },
     validatePassword: function(password, confirm_password) {
         return utils.md5(password, 'base64') == confirm_password;
-    }
+    },
+    findAll: function(callback){
+        User.find(callback);
+    },
+    deleteById: function(id, callback) {
+        User.remove({_id: id}, callback);
+    },
 };
