@@ -8,6 +8,9 @@ module.exports = {
     findRobot: function(params, callback) {
         Robot.find(params).exec(callback);
     },
+    findOneRobot: function(params, callback) {
+        Robot.findOne(params).exec(callback);
+    },
     createRobot: function(robot, callback){
         Robot.create(robot, callback);
     },
