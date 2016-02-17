@@ -2,8 +2,6 @@
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/toastr/toastr.js"></script>
 <script>
-    console.log('{{ success }}');
-    console.log('{{ error }}');
     toastr.options = {
         "closeButton": false,
         "debug": false,

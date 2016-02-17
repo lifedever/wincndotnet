@@ -1,3 +1,7 @@
 .container {
     width: 960px;
 }
+
+.wrapper {
+    background-color: #e2e2e2;
+}

@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var swig = require('swig');
 
+var authority = require('./lib/authority');
 var config = require('./config');
 var routes = require('./routes/index.route');
 var users = require('./routes/users.route');
@@ -18,7 +19,7 @@ var app = express();
 mongoose.connect(config.db.url);
 
 // view engine setup
-swig.setDefaults({ cache: false });
+swig.setDefaults({cache: false});
 app.engine('swig', swig.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'swig');
@@ -53,7 +54,7 @@ app.use(function (req, res, next) {
 });
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/u', authority.isLogin, users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
