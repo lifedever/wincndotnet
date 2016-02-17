@@ -12,5 +12,8 @@ module.exports = {
     registerUser: function(user, callback) {
         user.password = utils.md5(user.password, 'base64');
         User.create(user, callback);
+    },
+    validatePassword: function(password, confirm_password) {
+        return utils.md5(password, 'base64') == confirm_password;
     }
 };

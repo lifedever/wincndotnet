@@ -26,7 +26,7 @@ var _getUser = function () {
             updatedAt: 'updated_at'
         }
     });
-    userSchema.methods.validPassword = function (password) {
+    userSchema.statics.validPassword = function (password) {
         return utils.md5(password, 'base64') == this.password;
     };
     return mongoose.model('User', userSchema);

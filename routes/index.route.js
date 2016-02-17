@@ -11,18 +11,35 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
-    res.render('login');
+        if (req.session.user) {
+            res.redirect('/');
+            return;
+        } else {
+            next();
+        }
+    }, function (req, res, next) {
+        res.render('login');
 
-});
+    }
+);
 
 router.post('/login', function (req, res, next) {
     var user = req.body;
-    async.waterfall({
-
-    }, function(){
-
+    userService.findUserByUsername(user.username, function (err, dbUser) {
+        if (err) {
+            next(err);
+        } else {
+            if (dbUser && userService.validatePassword(user.password, dbUser.password)) {
+                req.flash(config.constant.flash.success, '欢迎回来, ' + user.username + '!');
+                req.session.user = dbUser;
+                res.redirect('/');
+            } else {
+                req.flash(config.constant.flash.error, '用户名或密码错误!');
+                res.redirect('/login');
+            }
+        }
     });
-    req.flash(config.constant.flash.success, '欢迎回来, ' + user.username + '!');
+
 });
 
 router.get('/join', function (req, res, next) {
@@ -75,5 +92,11 @@ router.post('/join', function (req, res, next) {
         });
     });
 });
+
+router.get('/logout', function (req, res, next) {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 
 module.exports = router;
