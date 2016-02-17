@@ -22,6 +22,7 @@
     "serve-favicon": "~2.3.0",
     "superagent": "^1.7.2",
     "swig": "^1.4.2",
-    "utility": "^1.6.0"
+    "utility": "^1.6.0",
+    "wechat": "^2.0.3"
   }
 }

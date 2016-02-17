@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var swig = require('swig');
+var wx = require('wechat');
 
 var authority = require('./lib/authority');
 var swigExtends = require('./lib/swig.extends');
