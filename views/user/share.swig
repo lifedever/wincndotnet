@@ -3,7 +3,7 @@
     <div class="container" id="app">
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-default ">
+                <div class="box box-solid ">
                     <div class="box-header with-border">
                         <div class="box-title">欢迎创建分享内容</div>
                     </div>

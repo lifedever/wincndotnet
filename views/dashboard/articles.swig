@@ -7,7 +7,7 @@
         <th width="60">状态</th>
         <th width="100">作者</th>
         <th width="300">标题</th>
-        <th >链接</th>
+        <th width="300">链接</th>
         <th width="150">创建时间</th>
         <th width="200">操作</th>
     </tr>

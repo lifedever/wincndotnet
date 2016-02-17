@@ -18,6 +18,14 @@ module.exports = {
             error: 'error'
         }
     },
+    tl: {
+        api: 'http://www.tuling123.com/openapi/api',
+        key: '080cb4400d17375660c8b49e25994125'
+    },
+    wx: {
+        load: true,
+        noSkill: "没有此技能，请关注网站: http://wincn.net了解更多!"
+    },
     role: {
         user: 'user',
         admin: 'admin'

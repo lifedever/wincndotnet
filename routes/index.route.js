@@ -4,10 +4,13 @@ var router = express.Router();
 
 var config = require('../config');
 var userService = require('../service/user.service');
+var articleService = require('../service/article.service');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.render('index', {title: 'Express'});
+    articleService.findPublished(function (err, articles) {
+        res.render('index', {articles: articles});
+    });
 });
 
 router.get('/login', function (req, res, next) {

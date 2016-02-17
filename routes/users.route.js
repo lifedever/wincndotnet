@@ -7,7 +7,7 @@ var config = require('../config');
 
 /* GET users listing. */
 router.get('/share', function (req, res, next) {
-    res.render('u/share', {menu: 'share'});
+    res.render('user/share', {menu: 'share'});
 });
 
 router.post('/share', function (req, res, next) {
@@ -18,7 +18,7 @@ router.post('/share', function (req, res, next) {
             next(err);
         }else{
             req.flash(config.constant.flash.success, '分享成功，请耐心等待管理员审核!');
-            res.redirect('/u/share');
+            res.redirect('/user/share');
         }
     })
 });

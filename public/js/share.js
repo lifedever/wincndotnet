@@ -6,7 +6,7 @@ new Vue({
     methods: {
         parseUrl: function (event) {
             var $this = this;
-            this.$http.get('/u/share/parseUrl', {url: encodeURI(this.url)}).then(function (response) {
+            this.$http.get('/user/share/parseUrl', {url: encodeURI(this.url)}).then(function (response) {
                 $this.article = response.data
             }, function (response) {
                 toastr.error(response);

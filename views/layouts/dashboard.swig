@@ -9,6 +9,7 @@
                         <li role="presentation" {% if subMenu == 'users' %}class="active"{% endif %}><a
                                     href="/dashboard">用户管理</a></li>
                         <li role="presentation" {% if subMenu == 'articles' %}class="active"{% endif %}><a href="/dashboard/articles">文章管理</a></li>
+                        <li role="presentation" {% if subMenu == 'wx' %}class="active"{% endif %}><a href="/dashboard/wx">配置微信</a></li>
                     </ul>
                 </div>
             </div>

@@ -13,26 +13,13 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="#">Link <span
+                <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">分享列表 <span
                                 class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+
             </ul>
             {% if session.user %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li {% if menu == 'share' %}class="active" {% endif %} ><a href="/u/share"> <i
+                    <li {% if menu == 'share' %}class="active" {% endif %} ><a href="/user/share"> <i
                                     class="fa fa-edit"></i> 创建分享</a></li>
                     {% if session.user.role == 'admin' %}
                         <li class="dropdown {% if menu == 'dashboard' %}active{% endif %}">
@@ -41,6 +28,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/dashboard">用户管理</a></li>
                                 <li><a href="/dashboard/articles">文章管理</a></li>
+                                <li><a href="/dashboard/wx">配置微信</a></li>
                             </ul>
                         </li>
                     {% endif %}

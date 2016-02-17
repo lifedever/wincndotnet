@@ -11,12 +11,15 @@ var swig = require('swig');
 
 var authority = require('./lib/authority');
 var swigExtends = require('./lib/swig.extends');
+var wxRobot = require('./lib/wx.robot');
+var wxHelper = require('./lib/wx.helper');
 
 var config = require('./config');
-var routes = require('./routes/index.route');
-var users = require('./routes/users.route');
-var dashboard = require('./routes/dashboard.route');
 var app = express();
+
+if (config.wx.load) {  // 是否加载微信配置信息
+    wxHelper.loadWX();
+}
 
 mongoose.connect(config.db.url);
 
@@ -57,9 +60,19 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use('/', routes);
-app.use('/u', authority.isLogin, users);
-app.use('/dashboard', authority.isAdmin, dashboard);
+app.use('/', require('./routes/index.route'));
+app.use('/u', require('./routes/index-u.route'));
+app.use('/p', require('./routes/index-p.route'));
+app.use('/user', authority.isLogin, require('./routes/users.route'));
+app.use('/dashboard', authority.isAdmin, require('./routes/dashboard.route'));
+
+
+// wx
+app.use('/api/wx', wx(global.wx, function (req, res, next) {
+    var wx = req.weixin;
+    wxRobot.reply(wx, res);
+}));
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');

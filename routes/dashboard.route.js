@@ -9,6 +9,8 @@ var router = express.Router();
 var config = require('../config');
 var userService = require('../service/user.service');
 var articleService = require('../service/article.service');
+var wxService = require('../service/wx.service');
+
 
 /**
  * 后台首页，用户列表
@@ -28,9 +30,9 @@ router.get('/', function (req, res) {
 router.get('/u/delete/:id', function (req, res, next) {
     var id = req.params.id;
     userService.deleteById(id, function (err, doc) {
-        if(err) {
+        if (err) {
             next(err);
-        }else{
+        } else {
             articleService.deleteByUserId(id);
             req.flash(config.constant.flash.success, '记录已删除!');
             res.redirect('/dashboard');
@@ -60,10 +62,10 @@ router.get('/articles/publish/:id/:status', function (req, res, next) {
     var id = req.params.id;
     var status = req.params.status;
 
-    articleService.updateById(id, {status: status}, function(err, raw){
-        if(err) {
+    articleService.updateById(id, {status: status}, function (err, raw) {
+        if (err) {
             next(err);
-        }else{
+        } else {
             res.redirect('/dashboard/articles');
         }
     });
@@ -76,13 +78,41 @@ router.get('/articles/publish/:id/:status', function (req, res, next) {
 router.get('/articles/delete/:id', function (req, res, next) {
     var id = req.params.id;
     articleService.deleteById(id, function (err, doc) {
-        if(err) {
+        if (err) {
             next(err);
-        }else{
+        } else {
             req.flash(config.constant.flash.success, '记录已删除!');
             res.redirect('/dashboard/articles');
         }
     });
+});
+
+router.get('/wx', function (req, res, next) {
+    wxService.find(function(err, wx) {
+        if(err) {
+            next(err);
+        }else{
+            res.render('dashboard/wx',
+                {
+                    menu: 'dashboard',
+                    subMenu: 'wx',
+                    wx: wx[0]
+                }
+            );
+        }
+    })
+});
+
+router.post('/wx', function (req, res, next) {
+    var wx = req.body;
+    wxService.save(wx, function(err, wx) {
+        if (err) {
+            next(err);
+        } else {
+            req.flash(config.constant.flash.success, '保存成功!');
+            res.redirect('/dashboard/wx');
+        }
+    })
 });
 
 module.exports = router;
