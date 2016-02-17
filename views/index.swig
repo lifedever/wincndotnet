@@ -25,7 +25,7 @@
                                             </a>
                                             分享于 {{ article.created_at | timeFromNow }}
                                             |
-                                            来自 <b>{{ article.source }}</b>
+                                            来自 <span class="text-primary">{{ article.source }}</span>
                                         </small>
                                     </div>
                                 </li>
