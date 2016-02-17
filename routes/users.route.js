@@ -12,6 +12,7 @@ router.get('/share', function (req, res, next) {
 
 router.post('/share', function (req, res, next) {
     var article = req.body;
+    article._user = req.session.user._id;
     articleService.saveArticle(article, function(err, article) {
         if(err) {
             next(err);

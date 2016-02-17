@@ -10,7 +10,7 @@ var config = require('../config');
 var userService = require('../service/user.service');
 
 router.get('/', function (req, res) {
-    res.render('dashboard/index');
+    res.render('dashboard/index', {menu: 'dashboard'});
 });
 
 module.exports = router;

@@ -30,14 +30,14 @@
             {% if session.user %}
                 <ul class="nav navbar-nav navbar-right">
                     <li {% if menu == 'share' %}class="active" {% endif %} ><a href="/u/share"> <i class="fa fa-edit"></i> 创建分享</a></li>
-
+                    {% if session.user.role == 'admin' %}
+                        <li {% if menu == 'dashboard' %}class="active" {% endif %} ><a href="/dashboard">后台管理</a></li>
+                    {% endif %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ session.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">个人中心</a></li>
-                            {% if session.user.role == 'admin' %}
-                            <li><a href="/dashboard">后台管理</a></li>
-                            {% endif %}
+
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">退出</a></li>
                         </ul>
