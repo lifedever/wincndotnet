@@ -1,4 +1,6 @@
 var express = require('express');
+var session = require('express-session');
+var flash = require('connect-flash');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -24,14 +26,29 @@ app.set('view cache', false);
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+
+
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+    secret: config.db.cookieSecret,
+    cookie: {maxAge: 30 * 60 * 1000}
+}));
+
+app.use(flash());
+
+/**
+ * 全局参数传递
+ */
 app.use(function (req, res, next) {
     res.locals.site = config.site;
+    res.locals.success = req.flash(config.constant.flash.success);
+    res.locals.error = req.flash(config.constant.flash.error);
+    res.locals.session = req.session;
     next();
 });
 

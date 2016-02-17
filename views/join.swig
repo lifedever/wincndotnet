@@ -9,8 +9,7 @@
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">注册一个账号，开启分享之旅!</p>
-
+        <p class="login-box-msg">注册一个账号，开启分享之旅! </p>
         <form action="/join" method="post">
             <div class="form-group has-feedback">
                 <input type="text" class="form-control" placeholder="登录名" name="username" required>
@@ -41,6 +40,6 @@
         </div>
     </div>
 </div>
-
+{% include 'layouts/partials/js.swig' %}
 </body>
 </html>

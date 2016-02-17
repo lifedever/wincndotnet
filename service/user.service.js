@@ -1,3 +1,5 @@
+var utils = require('utility');
+
 var User = require('../model/user.model');
 
 module.exports = {
@@ -5,6 +7,10 @@ module.exports = {
         User.findOne({username: username}).exec(callback);
     },
     findUserByEmail: function(email, callback) {
-        User.findOne({email: user.email}).exec(callback);
+        User.findOne({email: email}).exec(callback);
+    },
+    registerUser: function(user, callback) {
+        user.password = utils.md5(user.password, 'base64');
+        User.create(user, callback);
     }
 };

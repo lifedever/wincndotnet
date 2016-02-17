@@ -9,6 +9,7 @@ module.exports = {
         version: '1.0.1'
     },
     db: {
+        cookieSecret: 'blogbynodesecret',
         url: 'mongodb://127.0.0.1:27017/wincndotnet'
     },
     constant: {
