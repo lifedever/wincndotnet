@@ -59,6 +59,9 @@ td {
 .margin5-r {
     margin-right: 5px;
 }
+.font-12 {
+    font-size: 12px;
+}
 
 .label {
     display: inline;
