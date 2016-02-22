@@ -18,7 +18,11 @@
                                         </a>
                                     </div>
                                     <div class="media-body">
-                                        <h4 class="media-heading"><a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a></h4>
+                                        <h4 class="media-heading">
+                                            <a href="/p/{{ article.id }}"
+                                               target="_blank">{{ article.title }}</a>
+
+                                        </h4>
                                         <small>
                                             <a href="/u/{{ article._user.username }}">
                                                 <b>{{ article._user.username }}</b>
@@ -26,6 +30,17 @@
                                             分享于 {{ article.created_at | timeFromNow }}
                                             |
                                             来自 <span class="text-primary">{{ article.source }}</span>
+
+                                            {% if article.tags.length>0 %}
+
+                                          |
+
+                                            <small>
+                                                {% autoescape %}
+                                                    {{ article.tags | tags }}
+                                                {% endautoescape %}
+                                                {% endif %}
+                                            </small>
                                         </small>
                                     </div>
                                 </li>

@@ -9,23 +9,35 @@
                     </div>
                     <div class="box-body">
                         <form class="form-horizontal" method="post">
+                            <input type="text" name="id" value="{{ article.id }}">
                             <div class="form-group">
                                 <label for="url" class="col-sm-2 control-label">链接</label>
                                 <div class="col-sm-8">
-                                    <input type="url" class="form-control" id="url" name="url" required placeholder="eg: http://www.jianshu.com/p/027dedbc62d7" v-model="url" @blur="parseUrl">
+                                    <input type="url" class="form-control" id="url" name="url" required
+                                           placeholder="eg: http://www.jianshu.com/p/027dedbc62d7" v-model="url"
+                                           @blur="parseUrl" value="{{ article.url }}">
                                     <p class="help-block">系统会自动解析url相关信息, 帮助填写.</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">标题</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="title" name="title" required placeholder="eg: 让WebStorm支持swig文件语法高亮" v-model="article.title">
+                                    <input type="text" class="form-control" id="title" name="title" required
+                                           placeholder="eg: 让WebStorm支持swig文件语法高亮" v-model="article.title" value="{{ article.title }}">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="source" class="col-sm-2 control-label">来源</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" id="source" name="source" required placeholder="eg: 简书" v-model="article.source">
+                                    <input type="text" class="form-control" id="source" name="source" required
+                                           placeholder="eg: 简书" v-model="article.source" value="{{ article.source }}">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="tags" class="col-sm-2 control-label">标签</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" name="articleTags"
+                                           value="{{ article.tags }}" placeholder="逗号分隔">
                                 </div>
                             </div>
                             <div class="form-group">
