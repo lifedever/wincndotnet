@@ -9,7 +9,7 @@
                     </div>
                     <div class="box-body">
                         <form class="form-horizontal" method="post">
-                            <input type="text" name="id" value="{{ article.id }}">
+                            <input type="hidden" name="id" value="{{ article.id }}">
                             <div class="form-group">
                                 <label for="url" class="col-sm-2 control-label">链接</label>
                                 <div class="col-sm-8">
