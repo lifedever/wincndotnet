@@ -22,7 +22,7 @@
             <th>{% autoescape %}{{ a.status | articleStatus }}{% endautoescape %}</th>
             <td>{{ a._user.username }}</td>
             <td><a href="{{ a.url }}" target="_blank">{{ a.title }}</a></td>
-            <td>{{ a.tags }}</td>
+            <td>{% autoescape %}{{ a.tags | tags }}{% endautoescape %}</td>
             <td>{{ a.created_at | timeFromNow }}</td>
             <td>
                 {% if a.status %}
