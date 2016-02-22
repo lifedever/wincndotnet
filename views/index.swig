@@ -6,7 +6,7 @@
                 <div class="box box-solid">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            分享列表
+                            分享列表 <small class="text-blue font-12">共{{ articles.length }}篇</small>
                         </div>
                     </div>
                     <div class="box-body">
