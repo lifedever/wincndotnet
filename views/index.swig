@@ -6,7 +6,8 @@
                 <div class="box box-solid">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            分享列表 <small class="text-blue font-12">共{{ articles.length }}篇</small>
+                            分享列表
+                            <small class="text-blue font-12">共{{ articles.length }}篇</small>
                         </div>
                     </div>
                     <div class="box-body">
@@ -31,15 +32,18 @@
 
                                             {% if article.tags.length>0 %}
 
-                                          |
+                                                |
 
                                                 {% autoescape %}
                                                     {{ article.tags | tags }}
                                                 {% endautoescape %}
-                                                {% endif %}
+                                            {% endif %}
                                         </small>
-                                        <small class="pull-right font-12">来自 <span class="text-primary">{{ article.source }}</span></small>
-
+                                        <small class="pull-right font-12">来自
+                                            <a href="/source/{{ article.source }}">
+                                                <span class="text-primary">{{ article.source }}</span>
+                                            </a>
+                                        </small>
                                     </div>
                                 </li>
                             {% endfor %}
