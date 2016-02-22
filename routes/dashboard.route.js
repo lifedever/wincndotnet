@@ -43,16 +43,29 @@ router.get('/u/delete/:id', function (req, res, next) {
 /**
  * 文章列表
  */
-router.get('/articles', function (req, res) {
-    articleService.findAll(function (err, articles) {
-        res.render('dashboard/articles',
-            {
-                menu: 'dashboard',
-                subMenu: 'articles',
-                articles: articles
-            }
-        );
-    });
+router.get('/articles', function (req, res, next) {
+    async.parallel({
+        articles: function (callback) {
+            articleService.findAll(callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        }
+    }, function (err, results) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('dashboard/articles',
+                {
+                    menu: 'dashboard',
+                    subMenu: 'articles',
+                    tags: results.tags,
+                    articles: results.articles
+                }
+            );
+        }
+    })
+
 });
 
 /**
@@ -88,10 +101,10 @@ router.get('/articles/delete/:id', function (req, res, next) {
 });
 
 router.get('/wx', function (req, res, next) {
-    wxService.findRobot(function(err, robots) {
-        if(err) {
+    wxService.findRobot(function (err, robots) {
+        if (err) {
             next(err);
-        }else{
+        } else {
             res.render('dashboard/wx',
                 {
                     menu: 'dashboard',
@@ -110,7 +123,7 @@ router.post('/wx', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            if(doc.length == 0){
+            if (doc.length == 0) {
                 wxService.createRobot(robot, function (err, doc) {
                     if (err) {
                         next(err);
@@ -118,7 +131,7 @@ router.post('/wx', function (req, res, next) {
                         res.redirect('/dashboard/wx');
                     }
                 });
-            }else{
+            } else {
                 req.flash(config.constant.flash.error, '规则已存在!');
                 res.redirect('/dashboard/wx');
             }

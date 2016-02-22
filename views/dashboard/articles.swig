@@ -1,4 +1,7 @@
 {% extends '../layouts/dashboard.swig' %}
+{% block dashboard-header %}
+<div class="pad">已有标签列表：{% autoescape %}{{ tags |tags }}{% endautoescape %}</div>
+{% endblock %}
 {% block dashboard-content %}
 <table class="table table-hover">
     <thead>
@@ -14,23 +17,24 @@
     </thead>
     <tbody>
     {% for a in articles %}
-    <tr>
-        <td>{{ loop.index }}</td>
-        <th>{% autoescape %}{{ a.status | articleStatus}}{% endautoescape %}</th>
-        <td>{{ a._user.username }}</td>
-        <td><a href="{{ a.url }}" target="_blank">{{ a.title }}</a></td>
-        <td>{{ a.tags }}</td>
-        <td>{{ a.created_at | timeFromNow }}</td>
-        <td>
-            {% if a.status %}
-                <a href="/dashboard/articles/publish/{{ a.id }}/false" class="btn btn-sm btn-warning">停止发布</a>
-            {% else %}
-                <a href="/user/share?id={{ a.id }}" class="btn btn-sm btn-primary">编辑</a>
-                <a href="/dashboard/articles/publish/{{ a.id }}/true" class="btn btn-sm btn-success">发布</a>
-                <a href="/dashboard/articles/delete/{{ a.id }}" class="btn btn-sm btn-danger" data-toggle="confirm" data-message="确认删除吗?">删除</a>
-            {% endif %}
-        </td>
-    </tr>
+        <tr>
+            <td>{{ loop.index }}</td>
+            <th>{% autoescape %}{{ a.status | articleStatus }}{% endautoescape %}</th>
+            <td>{{ a._user.username }}</td>
+            <td><a href="{{ a.url }}" target="_blank">{{ a.title }}</a></td>
+            <td>{{ a.tags }}</td>
+            <td>{{ a.created_at | timeFromNow }}</td>
+            <td>
+                {% if a.status %}
+                    <a href="/dashboard/articles/publish/{{ a.id }}/false" class="btn btn-sm btn-warning">停止发布</a>
+                {% else %}
+                    <a href="/user/share?id={{ a.id }}" class="btn btn-sm btn-primary">编辑</a>
+                    <a href="/dashboard/articles/publish/{{ a.id }}/true" class="btn btn-sm btn-success">发布</a>
+                    <a href="/dashboard/articles/delete/{{ a.id }}" class="btn btn-sm btn-danger" data-toggle="confirm"
+                       data-message="确认删除吗?">删除</a>
+                {% endif %}
+            </td>
+        </tr>
     {% endfor %}
     </tbody>
 </table>

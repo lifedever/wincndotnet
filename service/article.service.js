@@ -24,6 +24,15 @@ module.exports = {
     findPublished: function (callback) {
         Article.find({status: true}).populate(['_user']).sort({created_at: -1}).exec(callback);
     },
+    findTags: function (callback) {
+        Article.find({}, {tags: 1}, function (err, articles) {
+            var tags = new Array();
+            _(articles).forEach(function (value) {
+                tags = _.concat(tags, value.tags);
+            });
+            callback(err, _.uniq(tags));
+        });
+    },
     updateById: function (id, params, callback) {
         Article.update({_id: id}, params, callback);
     },
