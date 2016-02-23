@@ -12,14 +12,13 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="pull-left">
-                    <b>Copyright</b> &copy; 2015 - 2016  <b>WINCN.NET</b>, All Rights Reserved
+                    &copy; 2015 - 2016  <b>WINCN.NET</b>
                 </p>
                 <p class="pull-right">
                     Version {{ site.version }}
                 </p>
             </div>
             <div class="col-md-12">
-
                 <p class="pull-left">
 
                     Build by <a href="https://nodejs.org/" target="_blank">Nodejs</a> + <a href="http://expressjs.com/" target="_blank">Express</a>

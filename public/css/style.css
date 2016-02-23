@@ -105,6 +105,12 @@ td {
     border-radius: 2px;
 }
 
-.label-alpha {
-
+.clear {
+    clear: both;
+}
+.navbar-toggle {
+    color: #000;
+    border: 0;
+    margin: 0;
+    padding: 15px 15px;
 }
