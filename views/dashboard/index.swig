@@ -11,7 +11,6 @@
     </thead>
     <tbody>
     {% for u in users %}
-
         <tr>
             <td>{{ loop.index }}</td>
             <td>{{ u.username }}</td>
@@ -21,7 +20,6 @@
                     <a href="/dashboard/u/delete/{{ u.id }}" class="btn btn-sm btn-danger" data-toggle="confirm"
                        data-message="确认要删除此用户吗? 注意: 与此用户有关的内容会一并删除!">删除</a>
                 {% endif %}
-
             </td>
         </tr>
     {% endfor %}
