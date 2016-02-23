@@ -118,7 +118,6 @@ router.get('/wx', function (req, res, next) {
 
 router.post('/wx', function (req, res, next) {
     var robot = req.body;
-
     wxService.findRobot({key: robot.key}, function (err, doc) {
         if (err) {
             next(err);

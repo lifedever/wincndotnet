@@ -8,8 +8,18 @@ var articleService = require('../service/article.service');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    articleService.findPublished(function (err, articles) {
-        res.render('index', {articles: articles});
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublished(callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        }
+    }, function (err, results) {
+        res.render('index', {
+            articles: results.articles,
+            tags: results.tags
+        });
     });
 });
 
