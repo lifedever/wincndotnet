@@ -64,11 +64,7 @@
                         </ul>
                     </div>
                     <div class="box-footer">
-                        {% if articles.length>0 %}
-                            <a class="btn btn-block btn-default margin5-b" href="?page={{ page }}">下一页</a>
-                        {% else %}
-                            <a class="btn btn-block btn-default margin5-b" href="javascript:history.go(-1)">返回</a>
-                        {% endif %}
+
                     </div>
                 </div>
             </div>

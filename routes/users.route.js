@@ -24,18 +24,22 @@ router.get('/:username/favorite', function (req, res, next) {
     var username = req.params.username;
     async.waterfall([
         function (callback) {
+            articleService.findTags(callback);
+        },
+        function (tags, callback) {
             userService.findUserByUsername(username, function (err, user) {
-                callback(err, user.favorites);
+                callback(err, user.favorites, tags);
             })
         },
-        function (favorites, callback) {
+        function (favorites, tags, callback) {
             articleService.findAll({_id: {$in: favorites}}, function (err, articles) {
-                callback(err, articles);
+                callback(err, articles, tags);
             });
         }
-    ], function (error, articles) {
+    ], function (error, articles, tags) {
         res.render('favorites', {
             menu: 'favorite',
+            tags: tags,
             articles: articles
         });
     });
