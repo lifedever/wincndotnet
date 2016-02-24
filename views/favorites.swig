@@ -6,7 +6,7 @@
                 <div class="box box-solid box-default">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            <i class="fa fa-heart text-red"></i> 我的收藏
+                            <i class="fa fa-bookmark text-red"></i> 我的收藏
                             <small class="text-blue font-12">共{{ articles.length }}篇</small>
                         </div>
                     </div>

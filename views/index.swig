@@ -38,14 +38,14 @@
 
                                                     {% if favorites.indexOf(article.id) > -1 %}
                                                         <small class="pull-right" title="已收藏" data-toggle="tooltip">
-                                                            <i class="fa fa-heart text-red"></i> {{ article.favorite_count }}
+                                                            <i class="fa fa-bookmark text-red"></i> {{ article.favorite_count }}
                                                         </small>
                                                     {% else %}
                                                         <a href="/user/favorite/{{ article.id }}" title="添加收藏"
                                                            data-toggle="tooltip"
                                                            class="pull-right p-favorite">
                                                             <small>
-                                                                <i class="fa fa-heart-o text-red"></i> {{ article.favorite_count }}
+                                                                <i class="fa fa-bookmark-o text-red"></i> {{ article.favorite_count }}
                                                             </small>
                                                         </a>
                                                     {% endif %}
@@ -54,7 +54,7 @@
                                                     <a href="/login" title="登录以收藏"
                                                        class="pull-right">
                                                         <small>
-                                                            <i class="fa fa-heart-o text-red"></i> {{ article.favorite_count }}
+                                                            <i class="fa fa-bookmark-o text-red"></i> {{ article.favorite_count }}
                                                         </small>
                                                     </a>
                                                 {% endif %}
