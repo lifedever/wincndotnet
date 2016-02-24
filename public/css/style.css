@@ -94,9 +94,9 @@ td {
 
 .label {
     display: inline;
-    padding: .2em .6em;
-    font-size: 75%;
-    font-weight: lighter;
+    padding: .3em .6em;
+    font-size: 70%;
+    font-weight: normal;
     line-height: 1;
     color: #fff;
     text-align: center;

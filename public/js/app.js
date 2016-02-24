@@ -11,3 +11,4 @@ if ($('footer').length > 0) {
     var height = h > 120 ? h - 195 : 120;
     $('footer').css({marginTop: height});
 }
+

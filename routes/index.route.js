@@ -8,9 +8,13 @@ var articleService = require('../service/article.service');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+    var page = req.query.page || 0;
     async.parallel({
         articles: function (callback) {
-            articleService.findPublished(callback);
+            articleService.findPublished(page * 10, 10, callback);
+        },
+        count: function (callback) {
+            articleService.count(callback);
         },
         tags: function (callback) {
             articleService.findTags(callback);
@@ -18,10 +22,14 @@ router.get('/', function (req, res, next) {
     }, function (err, results) {
         res.render('index', {
             articles: results.articles,
+            count: results.count,
+            page: (Number(page) + 1),
             tags: results.tags
-        });
+        })
+        ;
     });
 });
+
 
 router.get('/login', function (req, res, next) {
         if (req.session.user) {

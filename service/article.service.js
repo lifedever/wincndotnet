@@ -9,6 +9,9 @@ module.exports = {
     getTags: function (value) {
         return _.split(value, ',');
     },
+    count: function(params, callback){
+        Article.count(params).exec(callback);
+    },
     search: function (params, callback) {
         Article.find(params).exec(callback);
     },
@@ -21,8 +24,14 @@ module.exports = {
     findAll: function (callback) {
         Article.find().populate(['_user']).sort({status: 1, created_at: -1}).exec(callback);
     },
-    findPublished: function (callback) {
-        Article.find({status: true}).populate(['_user']).sort({up: -1, created_at: -1}).exec(callback);
+    findPublished: function (start, limit, callback) {
+        Article
+            .find({status: true})
+            .populate(['_user'])
+            .skip(start)
+            .limit(limit)
+            .sort({up: -1, created_at: -1})
+            .exec(callback);
     },
     findTags: function (callback) {
         Article.find({}, {tags: 1}, function (err, articles) {
