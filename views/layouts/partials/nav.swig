@@ -11,12 +11,14 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">分享列表 <span
-                                class="sr-only">(current)</span></a></li>
+                <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">
+                        <i class="fa fa-rss"></i> 分享列表
+                        <span class="sr-only">(current)</span></a></li>
 
                 {% if session.user %}
-                    <li {% if menu == 'favorite' %}class="active" {% endif %}><a href="/user/{{ session.user.username }}/favorite">我收藏的 <span
-                                    class="sr-only">(current)</span></a></li>
+                    <li {% if menu == 'favorite' %}class="active" {% endif %}><a href="/user/{{ session.user.username }}/favorite">
+                            <i class="fa fa-heart"></i> 我收藏的
+                            <span class="sr-only">(current)</span></a></li>
                 {% endif %}
             </ul>
             {% if session.user %}
@@ -30,7 +32,7 @@
                     {% if session.user.role == 'admin' %}
                         <li class="dropdown {% if menu == 'dashboard' %}active{% endif %}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-haspopup="true" aria-expanded="false">后台管理 <span class="caret"></span></a>
+                               aria-haspopup="true" aria-expanded="false"><i class="fa fa-dashboard"></i> 后台管理 <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/dashboard">用户管理</a></li>
                                 <li><a href="/dashboard/articles">文章管理</a></li>
@@ -40,10 +42,9 @@
                     {% endif %}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="false">{{ session.user.username }} <span class="caret"></span></a>
+                           aria-expanded="false"><i class="fa fa-user"></i> {{ session.user.username }} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="#">个人中心</a></li>
-
                             <li role="separator" class="divider"></li>
                             <li><a href="/logout">退出</a></li>
                         </ul>
