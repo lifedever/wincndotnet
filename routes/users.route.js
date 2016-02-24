@@ -32,7 +32,7 @@ router.get('/:username/favorite', function (req, res, next) {
             })
         },
         function (favorites, tags, callback) {
-            articleService.findAll({_id: {$in: favorites}}, function (err, articles) {
+            articleService.findPublishedAll({_id: {$in: favorites}}, function (err, articles) {
                 callback(err, articles, tags);
             });
         }

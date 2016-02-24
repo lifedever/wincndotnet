@@ -12,7 +12,7 @@ router.get('/', function (req, res, next) {
     async.parallel({
 
         articles: function (callback) {
-            articleService.findPublished(page * 10, 10, callback);
+            articleService.findPublished({}, page * 10, 10, callback);
         },
         count: function (callback) {
             articleService.count(callback);
@@ -38,6 +38,31 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/tags/:tag', function (req, res, next) {
+    var tag = req.params.tag;
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublishedAll({tags: tag}, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {favorites: null});
+            }
+        }
+    }, function (err, results) {
+        res.render('tags', {
+            articles: results.articles,
+            favorites: results.user.favorites,
+            tag: tag,
+            tags: results.tags
+        });
+    });
+});
 
 router.get('/login', function (req, res, next) {
         if (req.session.user) {

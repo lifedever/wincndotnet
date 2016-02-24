@@ -24,9 +24,18 @@ module.exports = {
     findAll: function (params, callback) {
         Article.find(params).populate(['_user']).sort({up: -1, status: 1, created_at: -1}).exec(callback);
     },
-    findPublished: function (start, limit, callback) {
+    findPublishedAll: function(params, callback){
+        params.status = true;
         Article
-            .find({status: true})
+            .find(params)
+            .populate(['_user'])
+            .sort({up: -1, created_at: -1})
+            .exec(callback);
+    },
+    findPublished: function (params, start, limit, callback) {
+        params.status = true;
+        Article
+            .find(params)
             .populate(['_user'])
             .skip(start)
             .limit(limit)
