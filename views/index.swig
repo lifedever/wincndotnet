@@ -52,21 +52,20 @@
                 {% endif %}
                 </h4>
                 <small>
-
-                    {% if article.tags.length>0 %}
-                        {% autoescape %}
-                            {{ article.tags | tags }}
-                        {% endautoescape %}
-                        •
-                    {% endif %}
-
+                    <i class="fa fa-user"></i>
                     <a href="/u/{{ article._user.username }}">
-                        <b>{{ article._user.username }}</b>
+                         <b>{{ article._user.username }}</b>
                     </a>
                     分享于 {{ article.created_at | timeFromNow }}
                     •
                     {{ article.views }} 次浏览
-
+                    {% if article.tags.length>0 %}
+                        •
+                        <i class="fa fa-tags"></i>
+                        {% autoescape %}
+                            {{ article.tags | tags }}
+                        {% endautoescape %}
+                    {% endif %}
 
                 </small>
                 <small class="pull-right font-12">来自
