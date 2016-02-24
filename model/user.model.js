@@ -19,6 +19,7 @@ var _getUser = function () {
         signature: {type: String},  // 个人签名
         job: {type: String},         // 职业
         inviteCode: {type: String},     // 注册码
+        favorites: {type: Array, default: []},   // 收藏的文章
         status: {type: Boolean, default: true}  // 用户是否有效
     }, {
         timestamps: {

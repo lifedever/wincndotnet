@@ -13,11 +13,20 @@
             <ul class="nav navbar-nav">
                 <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">分享列表 <span
                                 class="sr-only">(current)</span></a></li>
+
+                {% if session.user %}
+                    <li {% if menu == 'favorite' %}class="active" {% endif %}><a href="/user/{{ session.user.username }}/favorite">我收藏的 <span
+                                    class="sr-only">(current)</span></a></li>
+                {% endif %}
             </ul>
             {% if session.user %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li {% if menu == 'share' %}class="active" {% endif %} ><a href="/user/share"> <i
-                                    class="fa fa-edit"></i> 创建分享</a></li>
+                    <li {% if menu == 'share' %}class="active" {% endif %} >
+                        <a href="/user/share">
+                            <i class="fa fa-edit"></i> 创建分享
+                        </a>
+                    </li>
+
                     {% if session.user.role == 'admin' %}
                         <li class="dropdown {% if menu == 'dashboard' %}active{% endif %}">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

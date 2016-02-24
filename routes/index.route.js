@@ -10,6 +10,7 @@ var articleService = require('../service/article.service');
 router.get('/', function (req, res, next) {
     var page = req.query.page || 0;
     async.parallel({
+
         articles: function (callback) {
             articleService.findPublished(page * 10, 10, callback);
         },
@@ -18,15 +19,22 @@ router.get('/', function (req, res, next) {
         },
         tags: function (callback) {
             articleService.findTags(callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {favorites: null});
+            }
         }
     }, function (err, results) {
         res.render('index', {
             articles: results.articles,
+            favorites: results.user.favorites,
             count: results.count,
             page: (Number(page) + 1),
             tags: results.tags
-        })
-        ;
+        });
     });
 });
 

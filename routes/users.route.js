@@ -1,9 +1,58 @@
 var express = require('express');
-
+var async = require('async');
 var router = express.Router();
 
 var articleService = require('../service/article.service');
+var userService = require('../service/user.service');
+
 var config = require('../config');
+
+router.get('/favorite/:id', function (req, res, next) {
+    var pid = req.params.id;
+    var user = req.session.user;
+
+    userService.updateById(user._id, {$addToSet: {favorites: pid}}, function (err, raw) {
+        if (err) {
+            next(err);
+        } else {
+            res.send('添加收藏成功!');
+        }
+    });
+});
+
+router.get('/:username/favorite', function (req, res, next) {
+    var username = req.params.username;
+    async.waterfall([
+        function (callback) {
+            userService.findUserByUsername(username, function (err, user) {
+                callback(err, user.favorites);
+            })
+        },
+        function (favorites, callback) {
+            articleService.findAll({_id: {$in: favorites}}, function (err, articles) {
+                callback(err, articles);
+            });
+        }
+    ], function (error, articles) {
+        res.render('favorites', {
+            menu: 'favorite',
+            articles: articles
+        });
+    });
+});
+
+router.get('/:username/favorite/remove/:id', function (req, res, next) {
+    var user = req.session.user;
+    var id = req.params.id;
+    userService.updateById(user._id, {$pull: {favorites: id}}, function (err, raw) {
+        if (err) {
+            next(err);
+        } else {
+            req.flash(config.constant.flash.success, '已移除收藏!');
+            res.redirect('/user/' + user.username + '/favorite');
+        }
+    });
+});
 
 /* GET users listing. */
 router.get('/share', function (req, res, next) {
@@ -26,7 +75,7 @@ router.post('/share', function (req, res, next) {
     article._user = req.session.user._id;
     article.tags = articleService.getTags(article.articleTags);
 
-    if(article.id){
+    if (article.id) {
         articleService.updateById(article.id, article, function (err, article) {
             if (err) {
                 next(err);
@@ -35,7 +84,7 @@ router.post('/share', function (req, res, next) {
                 res.redirect('/dashboard/articles');
             }
         });
-    }else{
+    } else {
         articleService.saveArticle(article, function (err, article) {
             if (err) {
                 next(err);
