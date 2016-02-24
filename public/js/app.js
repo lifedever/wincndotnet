@@ -17,9 +17,13 @@ if ($('footer').length > 0) {
 $('.p-favorite').on('click', function (e) {
     e.preventDefault();
     var $this = $(this);
-    $.get($this.attr('href'), function (data) {
-        $this.attr('title', '已收藏');
-        $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
-        toastr.info(data);
-    });
+    if ($this.find('i').hasClass('fa-heart-o')) {
+        $.get($this.attr('href'), function (data) {
+            $this.attr('title', '已收藏');
+            $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+            var count = Number($this.find('small').text());
+            $this.find('small').html('<i class="fa fa-heart text-red"></i> ' + (count + 1));
+            toastr.info(data);
+        });
+    }
 });

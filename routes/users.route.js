@@ -15,7 +15,20 @@ router.get('/favorite/:id', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.send('添加收藏成功!');
+            async.waterfall([
+                function (callback) {
+                    articleService.findById(pid, callback);
+                },
+                function (article, callback) {
+                    articleService.updateById(pid, {favorite_count: article.favorite_count + 1}, callback);
+                }
+            ], function (err, raw) {
+                if (err) {
+                    next(err);
+                } else {
+                    res.send('添加收藏成功!');
+                }
+            });
         }
     });
 });
@@ -52,8 +65,21 @@ router.get('/:username/favorite/remove/:id', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            req.flash(config.constant.flash.success, '已移除收藏!');
-            res.redirect('/user/' + user.username + '/favorite');
+            async.waterfall([
+                function (callback) {
+                    articleService.findById(id, callback);
+                },
+                function (article, callback) {
+                    articleService.updateById(article.id, {favorite_count: article.favorite_count - 1}, callback);
+                }
+            ], function (err, raw) {
+                if(err) {
+                    next(err);
+                }else{
+                    req.flash(config.constant.flash.success, '已移除收藏!');
+                    res.redirect('/user/' + user.username + '/favorite');
+                }
+            });
         }
     });
 });

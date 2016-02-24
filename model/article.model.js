@@ -14,6 +14,7 @@ var _getArticle = function () {
         views: {type: Number, default: 0},       // 阅读数
         zan: {type: Number, default: 0},         // 点赞数
         tags: {type: Array, default: []},        // 文章标签
+        favorite_count: {type: Number, default: 0},     // 收藏数量
         _user: {
             type: Schema.Types.ObjectId,
             ref: 'User'
