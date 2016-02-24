@@ -70,7 +70,11 @@ router.get('/:username/favorite/remove/:id', function (req, res, next) {
                     articleService.findById(id, callback);
                 },
                 function (article, callback) {
-                    articleService.updateById(article.id, {favorite_count: article.favorite_count - 1}, callback);
+                    if(article.favorite_count>0) {
+                        articleService.updateById(article.id, {favorite_count: article.favorite_count - 1}, callback);
+                    }else{
+                        callback(null, null);
+                    }
                 }
             ], function (err, raw) {
                 if(err) {
