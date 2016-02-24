@@ -12,7 +12,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">
-                        <i class="fa fa-rss"></i> 分享列表
+                        分享列表
                         <span class="sr-only">(current)</span></a></li>
 
                 {% if session.user %}

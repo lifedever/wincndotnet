@@ -17,12 +17,12 @@ if ($('footer').length > 0) {
 $('.p-favorite').on('click', function (e) {
     e.preventDefault();
     var $this = $(this);
-    if ($this.find('i').hasClass('fa-heart-o')) {
+    if ($this.find('i').hasClass('fa-bookmark-o')) {
         $.get($this.attr('href'), function (data) {
             $this.attr('title', '已收藏');
-            $this.find('i').removeClass('fa-heart-o').addClass('fa-heart');
+            $this.find('i').removeClass('fa-bookmark-o').addClass('fa-bookmark');
             var count = Number($this.find('small').text());
-            $this.find('small').html('<i class="fa fa-heart text-red"></i> ' + (count + 1));
+            $this.find('small').html('<i class="fa fa-bookmark text-red"></i> ' + (count + 1));
             toastr.info(data);
         });
     }
