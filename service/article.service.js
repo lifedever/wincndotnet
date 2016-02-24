@@ -22,7 +22,7 @@ module.exports = {
         Article.find().populate(['_user']).sort({status: 1, created_at: -1}).exec(callback);
     },
     findPublished: function (callback) {
-        Article.find({status: true}).populate(['_user']).sort({created_at: -1}).exec(callback);
+        Article.find({status: true}).populate(['_user']).sort({up: -1, created_at: -1}).exec(callback);
     },
     findTags: function (callback) {
         Article.find({}, {tags: 1}, function (err, articles) {

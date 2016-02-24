@@ -100,6 +100,27 @@ router.get('/articles/delete/:id', function (req, res, next) {
     });
 });
 
+/**
+ * 文章置顶
+ */
+router.get('/articles/up/:id', function (req, res, next) {
+    var id = req.params.id;
+    var up = req.query.up;
+    if (up && up == 'true') {
+        up = false;
+    } else {
+        up = true;
+    }
+    articleService.updateById(id, {up: up}, function (err, raw) {
+        if (err) {
+            next(err);
+        } else {
+            res.redirect('/dashboard/articles');
+        }
+    });
+});
+
+
 router.get('/wx', function (req, res, next) {
     wxService.findRobot(function (err, robots) {
         if (err) {

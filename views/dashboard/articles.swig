@@ -21,12 +21,18 @@
             <td>{{ loop.index }}</td>
             <th>{% autoescape %}{{ a.status | articleStatus }}{% endautoescape %}</th>
             <td>{{ a._user.username }}</td>
-            <td><a href="{{ a.url }}" target="_blank">{{ a.title }}</a></td>
+            <td>
+                {% if a.up %}
+                    <span class="label label-primary">置顶</span>
+                {% endif %}
+                <a href="{{ a.url }}" target="_blank">{{ a.title }}</a>
+            </td>
             <td>{% autoescape %}{{ a.tags | tags }}{% endautoescape %}</td>
             <td>{{ a.created_at | timeFromNow }}</td>
             <td>
                 {% if a.status %}
                     <a href="/dashboard/articles/publish/{{ a.id }}/false" class="btn btn-sm btn-warning">停止发布</a>
+                    <a href="/dashboard/articles/up/{{a.id}}?up={{a.up}}" class="btn btn-sm btn-primary">置顶</a>
                 {% else %}
                     <a href="/user/share?id={{ a.id }}" class="btn btn-sm btn-primary">编辑</a>
                     <a href="/dashboard/articles/publish/{{ a.id }}/true" class="btn btn-sm btn-success">发布</a>

@@ -20,6 +20,10 @@
                                     </div>
                                     <div class="media-body">
                                         <h4 class="media-heading">
+
+                                            {% if article.up %}
+                                                <span class="label label-primary">置顶</span>
+                                            {% endif %}
                                             <a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
                                         </h4>
                                         <small>
