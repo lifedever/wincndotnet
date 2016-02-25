@@ -1,4 +1,5 @@
 body {
+    color: #333;
     margin-top: 70px;
     font-family: Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
@@ -31,11 +32,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .article a {
-    color: #000;
+    color: #333;
 }
 
 .article a:hover {
-    color: #0d6aad;
+    color: #EC5424;
 }
 
 .article small, .small {
@@ -48,7 +49,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .article .media-heading {
     font-size: 16px;
-    padding: 5px 0;
+    line-height: 28px;
 }
 
 .navbar-white {
@@ -57,7 +58,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 .navbar-white a {
-    color: #0f0f0f
+    color: #333
 }
 
 .navbar-brand b {
@@ -97,6 +98,10 @@ td {
     font-size: 12px;
 }
 
+.font-10 {
+    font-size: 10px;
+}
+
 .label {
     display: inline;
     padding: .3em .6em;
@@ -127,6 +132,7 @@ td {
 
 .box-body {
     overflow: hidden;
+    padding: 12px;
 }
 
 .margin5-t {

@@ -60,5 +60,5 @@
 {% block js %}
     <script src="/js/vue.min.js"></script>
     <script src="/js/vue-resource.min.js"></script>
-    <script src="/js/share.js"></script>
+    <script src="/js/share.min.js"></script>
 {% endblock %}
