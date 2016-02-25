@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #9d9d9d;
 }
 
+.article .media-heading {
+    padding: 5px 0;
+}
+
 .navbar-white {
     background-color: #fff;
     border-color: #e7e7e7;
