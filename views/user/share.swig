@@ -5,7 +5,10 @@
             <div class="col-md-12">
                 <div class="box box-solid ">
                     <div class="box-header with-border">
-                        <div class="box-title">欢迎创建分享内容</div>
+                        <div class="box-title">
+                            <i class="fa fa-share-alt"></i>
+                            欢迎创建分享内容
+                        </div>
                     </div>
                     <div class="box-body">
                         <form class="form-horizontal" method="post">
@@ -23,7 +26,8 @@
                                 <label for="title" class="col-sm-2 control-label">标题</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="title" name="title" required
-                                           placeholder="eg: 让WebStorm支持swig文件语法高亮" v-model="article.title" value="{{ article.title }}">
+                                           placeholder="eg: 让WebStorm支持swig文件语法高亮" v-model="article.title"
+                                           value="{{ article.title }}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -37,7 +41,8 @@
                                 <label for="tags" class="col-sm-2 control-label">标签</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="articleTags"
-                                           value="{{ article.tags }}" placeholder="逗号分隔">
+                                           value="{{ article.tags }}" placeholder="逗号分隔" id="articleTags">
+                                    <div class="margin5-t" id="tagsList">{% autoescape %}{{ tags |tags }}{% endautoescape %}</div>
                                 </div>
                             </div>
                             <div class="form-group">

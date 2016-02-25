@@ -32,7 +32,11 @@
                                                 {% if article.views > 100 %}
                                                     <i class="fa fa-fire text-red" title="被很多用户查阅"></i>
                                                 {% endif %}
-                                                <a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
+                                                <a href="#" href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
+                                               {# <a class="bds_more" data-cmd="more" style="cursor: pointer;">
+                                                    <small><i class="fa fa-share-alt"></i></small>
+                                                </a>#}
+
 
                                                 {% if session.user %}
 

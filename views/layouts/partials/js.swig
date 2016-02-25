@@ -3,6 +3,8 @@
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/lib/toastr/toastr.js"></script>
 <script>
+
+
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -27,4 +29,5 @@
     {% if error.length > 0 %}
         toastr.error('{{error}}');
     {% endif %}
+
 </script>

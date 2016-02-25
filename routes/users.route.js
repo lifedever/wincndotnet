@@ -70,16 +70,16 @@ router.get('/:username/favorite/remove/:id', function (req, res, next) {
                     articleService.findById(id, callback);
                 },
                 function (article, callback) {
-                    if(article.favorite_count>0) {
+                    if (article.favorite_count > 0) {
                         articleService.updateById(article.id, {favorite_count: article.favorite_count - 1}, callback);
-                    }else{
+                    } else {
                         callback(null, null);
                     }
                 }
             ], function (err, raw) {
-                if(err) {
+                if (err) {
                     next(err);
-                }else{
+                } else {
                     req.flash(config.constant.flash.success, '已移除收藏!');
                     res.redirect('/user/' + user.username + '/favorite');
                 }
@@ -91,13 +91,21 @@ router.get('/:username/favorite/remove/:id', function (req, res, next) {
 /* GET users listing. */
 router.get('/share', function (req, res, next) {
     var id = req.query.id;
-    articleService.findById(id, function (err, article) {
+    async.parallel({
+        article: function (callback) {
+            articleService.findById(id, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        }
+    }, function (err, results) {
         if (err) {
             next(err);
         } else {
             res.render('user/share', {
                 menu: 'share',
-                article: article
+                tags: results.tags,
+                article: results.article
             });
         }
     });

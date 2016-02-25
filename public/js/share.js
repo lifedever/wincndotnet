@@ -14,3 +14,15 @@ new Vue({
         }
     }
 });
+$('#tagsList a').on('click', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var $articleTags = $('#articleTags');
+    if ($articleTags.val().indexOf($this.data('tag')) < 0) {
+        if ($articleTags.val().length > 0) {
+            $articleTags.val($articleTags.val() + ',' + $this.data('tag'));
+        } else {
+            $articleTags.val($this.data('tag'));
+        }
+    }
+});
