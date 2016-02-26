@@ -23,13 +23,10 @@ router.get('/:id', function (req, res, next) {
         if (err) {
             next(err);
         } else if (article) {
-            if (req.session.user) {
-                res.render('user/view', {
-                    article: article
-                })
-            } else {
-                res.redirect(article.url);
-            }
+            res.render('user/view', {
+                article: article
+            })
+
         } else {
             res.send('article is not exist!');
         }
