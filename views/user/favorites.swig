@@ -1,4 +1,4 @@
-{% extends 'layouts/index.swig' %}
+{% extends '../layouts/index.swig' %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -21,16 +21,16 @@
                                         </div>
                                         <div class="media-body">
                                             <h4 class="media-heading">
-
                                                 {% if article.up %}
                                                     <span class="label label-primary">置顶</span>
                                                 {% endif %}
                                                 <a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
-
                                                 <small>
-                                                    <a href="/user/{{ session.user.username }}/favorite/remove/{{ article.id }}" data-toggle="confirm" data-message="确认取消收藏吗？" class="pull-right small text-red">取消收藏</a>
+                                                    <a href="/user/{{ session.user.username }}/favorite/remove/{{ article.id }}"
+                                                       data-toggle="confirm" data-message="确认取消收藏吗？" class="pull-right small text-red">
+                                                        取消收藏
+                                                    </a>
                                                 </small>
-                                                
                                             </h4>
                                             <small>
                                                 <i class="fa fa-user"></i>
@@ -47,7 +47,6 @@
                                                         {{ article.tags | tags }}
                                                     {% endautoescape %}
                                                 {% endif %}
-
                                             </small>
                                             <small class="pull-right font-12">来自
                                                 <a href="/source/{{ article.source }}">
@@ -68,9 +67,9 @@
                 </div>
             </div>
             <div class="col-md-3">
-                {% include 'layouts/sidebar/about.swig' %}
-                {% include 'layouts/sidebar/weixin.swig' %}
-                {% include 'layouts/sidebar/tags.swig' %}
+                {% include '../layouts/sidebar/about.swig' %}
+                {% include '../layouts/sidebar/weixin.swig' %}
+                {% include '../layouts/sidebar/tags.swig' %}
             </div>
         </div>
     </div>

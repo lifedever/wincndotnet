@@ -50,7 +50,7 @@ router.get('/:username/favorite', function (req, res, next) {
             });
         }
     ], function (error, articles, tags) {
-        res.render('favorites', {
+        res.render('user/favorites', {
             menu: 'favorite',
             tags: tags,
             articles: articles
@@ -113,10 +113,10 @@ router.get('/share', function (req, res, next) {
 
 router.post('/share', function (req, res, next) {
     var article = req.body;
+    var user = req.session.user;
 
-    article._user = req.session.user._id;
+    article._user = user._id;
     article.tags = articleService.getTags(article.articleTags);
-
     if (article.id) {
         articleService.updateById(article.id, article, function (err, article) {
             if (err) {
@@ -127,6 +127,8 @@ router.post('/share', function (req, res, next) {
             }
         });
     } else {
+        if (user.role == 'admin')
+            article.status = true;
         articleService.saveArticle(article, function (err, article) {
             if (err) {
                 next(err);
