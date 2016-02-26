@@ -5,7 +5,7 @@
             <div class="col-md-9">
                 <div class="box box-solid box-default">
                     <div class="box-header">
-                        <a href="javascript: window.close()"> <i class="fa fa-reply"></i> 返回上一级</a>
+                        <a href="javascript: history.go(-1)"> <i class="fa fa-reply"></i> 返回上一级</a>
                     </div>
                     <div class="box-body">
                         <h1 class="text-center page-header">
