@@ -13,12 +13,11 @@
                 <i class="fa fa-fire text-red" title="被很多用户查阅"></i>
             {% endif %}
             <a href="/p/{{ article.id }}">{{ article.title }}</a>
-            <small><a href="{{ article.url }}" target="_blank" class="text-red" title="查看原文"><i class="fa fa-link"></i></a></small>
-            {# <a class="bds_more" data-cmd="more" style="cursor: pointer;">
-                 <small><i class="fa fa-share-alt"></i></small>
-             </a>#}
-
-
+            <small>
+                <a href="{{ article.url }}" target="_blank" class="link-black" title="查看原文">
+                    <i class="fa fa-link"></i>
+                </a>
+            </small>
             {% if session.user %}
 
                 {% if favorites.indexOf(article.id) > -1 %}
