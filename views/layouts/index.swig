@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-12">
                 <p class="pull-left">
-                    &copy; 2015 - 2016  <b>WINCN.NET</b>
+                    &copy; 2015 - 2016 <b>WINCN.NET</b>
                 </p>
                 <p class="pull-right">
                     Version {{ site.version }}
@@ -21,9 +21,11 @@
             <div class="col-md-12">
                 <p class="pull-left">
 
-                    Build by <a href="https://nodejs.org/" target="_blank">Nodejs</a> + <a href="http://expressjs.com/" target="_blank">Express</a>
+                    Build by <a href="https://nodejs.org/" target="_blank">Nodejs</a> + <a href="http://expressjs.com/"
+                                                                                           target="_blank">Express</a>
                     |
-                    <i class="fa fa-code-fork"></i> <a href="https://github.com/gefangshuai/wincndotnet" target="_blank">  Fork me on Github</a>
+                    <i class="fa fa-code-fork"></i> <a href="https://github.com/gefangshuai/wincndotnet"
+                                                       target="_blank"> Fork me on Github</a>
                 </p>
 
                 <p class="pull-right">
@@ -38,6 +40,16 @@
 </footer>
 {% include 'partials/js.swig' %}
 <script id="dsq-count-scr" src="//wincndev.disqus.com/count.js" async></script>
+<script>
+    var disqus_shortname = 'wincndev'; // required: replace example with your forum shortname
+    (function () {
+        var s = document.createElement('script');
+        s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 {% block js %}
 </body>
 </html>

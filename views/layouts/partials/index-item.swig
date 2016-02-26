@@ -51,6 +51,8 @@
             分享于 {{ article.created_at | timeFromNow }}
             •
             {{ article.views }} 次浏览
+            •
+            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread">{{ article.title }}</a>
 
             {% if article.tags.length>0 %}
                 •
