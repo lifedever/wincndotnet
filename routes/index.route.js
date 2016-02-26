@@ -64,6 +64,32 @@ router.get('/tags/:tag', function (req, res, next) {
     });
 });
 
+router.get('/source/:source', function (req, res, next) {
+    var source = req.params.source;
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublishedAll({source: source}, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {favorites: null});
+            }
+        }
+    }, function (err, results) {
+        res.render('source', {
+            articles: results.articles,
+            favorites: results.user.favorites,
+            source: source,
+            tags: results.tags
+        });
+    });
+});
+
 router.get('/login', function (req, res, next) {
         if (req.session.user) {
             res.redirect('/');
