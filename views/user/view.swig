@@ -15,7 +15,7 @@
                         <p class="small  text-center">
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
-                            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread"></a>
+                            <span class="ds-thread-count" data-thread-key="{{ article.id }}" data-count-type="comments"></span> 次评论
                         </p>
                         <p class="margin5-t">
                             原文链接： <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
@@ -35,12 +35,12 @@
                     </div>
                 </div>
 
-                <div class="box box-solid box-default">
+                <div class="box box-solid box-default" id="ds-comments">
                     <div class="box-header">
                         <i class="fa fa-comment-o"></i> 添加评论
                     </div>
                     <div class="box-body">
-                        <div id="disqus_thread"></div>
+                        <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-url="http://wincn.net/p/{{ article.id }}"></div>
                     </div>
                 </div>
 
@@ -77,6 +77,7 @@
                         <a href="#" class="btn btn-primary btn-block"><b>查看{{ article._user.username }}发表的所有文章</b></a>
                     </div>
                 </div>
+                {% include '../layouts/sidebar/weixin.swig' %}
 
             </div>
         </div>
@@ -84,26 +85,5 @@
 {% endblock %}
 
 {% block js %}
-    <script>
-        /**
-         * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-         * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
-         */
 
-        var disqus_config = function () {
-            this.page.url = 'http://wincn.net/p/{{ article.id }}'; // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = '{{ article.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        };
-
-        (function () { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-
-            s.src = '//wincndev.disqus.com/embed.js';
-
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments
-            powered by Disqus.</a></noscript>
 {% endblock %}
