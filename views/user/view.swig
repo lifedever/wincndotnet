@@ -46,7 +46,7 @@
 
                 <div class="box box-solid box-default" id="ds-comments">
                     <div class="box-header">
-                        <i class="fa fa-comment-o"></i> 添加评论
+                        <i class="fa fa-comment"></i> 添加评论
                     </div>
                     <div class="box-body">
                         <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}"
