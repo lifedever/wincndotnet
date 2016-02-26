@@ -52,7 +52,7 @@
             •
             {{ article.views }} 次浏览
             •
-            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread">{{ article.title }}</a>
+            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread"></a>
 
             {% if article.tags.length>0 %}
                 •
