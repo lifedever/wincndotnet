@@ -24,14 +24,16 @@
                         <p>
                             来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
                         </p>
-                        <p>
-                            <b><i class="fa fa-retweet"></i> 相关文章:</b>
-                        </p>
-                        <ul>
-                            {% for a in articles %}
-                                <li><a href="/p/{{ a.id }}">{{ a.title }}</a></li>
-                            {% endfor %}
-                        </ul>
+                        {% if articles.length> 0 %}
+                            <p>
+                                <b><i class="fa fa-retweet"></i> 相关文章:</b>
+                            </p>
+                            <ul>
+                                {% for a in articles %}
+                                    <li><a href="/p/{{ a.id }}">{{ a.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                     </div>
                     <div class="box-footer">
                         <div class="row ">
