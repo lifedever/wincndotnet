@@ -19,7 +19,7 @@ module.exports = {
         Article.create(article, callback);
     },
     findById: function (id, callback) {
-        Article.findById(id, callback);
+        Article.findById(id, callback).populate(['_user']);
     },
     findAll: function (params, callback) {
         Article.find(params).populate(['_user']).sort({up: -1, status: 1, created_at: -1}).exec(callback);

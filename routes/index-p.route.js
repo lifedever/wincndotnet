@@ -1,34 +1,41 @@
 var express = require('express');
+var async = require('async');
+var lodash = require('lodash');
 
 var router = express.Router();
 
 var articleService = require('../service/article.service');
 
 router.get('/:id', function (req, res, next) {
-    var article = articleService.findById(req.params.id, function (err, article) {
+    var id = req.params.id;
+
+    async.waterfall([
+        function (callback) {
+            articleService.findById(id, callback);
+        },
+        function (article, callback) {
+            article.views += 1;
+            articleService.updateById(id, {views: article.views}, function (err, raw) {
+                callback(err, article);
+            });
+        }
+    ], function (err, article) {
         if (err) {
             next(err);
-        } else {
-            if (article) {
-                article.views += 1;
-                articleService.updateById(req.params.id, {views: article.views}, function (err, raw) {
-                    res.redirect(article.url);
-                });
+        } else if (article) {
+            if (req.session.user) {
+                res.render('user/view', {
+                    article: article
+                })
             } else {
-                res.send('article is not exist!');
+                res.redirect(article.url);
             }
+        } else {
+            res.send('article is not exist!');
         }
-    });
-});
 
-router.get('/data/json', function (req, res, next) {
-    var page = req.query.page;
-
-    articleService.findPublished(1 * page, 1, function (err, articles) {
-        res.render('articles-json', {
-            articles: articles
-        })
     });
+
 });
 
 module.exports = router;

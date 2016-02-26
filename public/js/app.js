@@ -27,3 +27,4 @@ $('.p-favorite').on('click', function (e) {
         });
     }
 });
+
