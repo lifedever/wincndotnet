@@ -18,7 +18,7 @@
                             <span class="ds-thread-count" data-thread-key="{{ article.id }}" data-count-type="comments"></span> 次评论
                         </p>
                         <p class="margin5-t">
-                            原文链接： <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
+                            原文链接: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
                         </p>
                         <p>
                             来自: <span class="text-red">{{ article.source }}</span>
