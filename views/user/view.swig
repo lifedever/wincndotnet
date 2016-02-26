@@ -21,14 +21,14 @@
                             原文链接： <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
                         </p>
                         <p>
-                            <small> 来自: {{ article.source }}</small>
+                            来自: <span class="text-red">{{ article.source }}</span>
                         </p>
 
                     </div>
                     <div class="box-footer">
                         <div class="row ">
                             <div class="col-md-12">
-                                <h5>Tags:</h5>
+                                <i class="fa fa-tags"></i> 标签:
                                 {% autoescape %}{{ article.tags | tags }}{% endautoescape %}
                             </div>
                         </div>
@@ -74,7 +74,7 @@
  #}
                     </div>
                     <div class="box-footer">
-                        <a href="#" class="btn btn-primary btn-block"><b>查看{{ article._user.username }}发表的所有文章</b></a>
+                        <a href="#" class="btn btn-primary btn-block"><b>查看{{ article._user.username }}分享的所有文章</b></a>
                     </div>
                 </div>
                 {% include '../layouts/sidebar/weixin.swig' %}
