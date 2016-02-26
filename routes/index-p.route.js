@@ -26,7 +26,6 @@ router.get('/:id', function (req, res, next) {
             res.render('user/view', {
                 article: article
             })
-
         } else {
             res.send('article is not exist!');
         }

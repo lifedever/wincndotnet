@@ -40,16 +40,6 @@
 </footer>
 {% include 'partials/js.swig' %}
 <script id="dsq-count-scr" src="//wincndev.disqus.com/count.js" async></script>
-<script>
-    var disqus_shortname = 'wincndev'; // required: replace example with your forum shortname
-    (function () {
-        var s = document.createElement('script');
-        s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
 {% block js %}
 </body>
 </html>
