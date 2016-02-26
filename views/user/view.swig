@@ -21,7 +21,7 @@
                             原文链接: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
                         </p>
                         <p>
-                            来自: <span class="text-red">{{ article.source }}</span>
+                            来自: <span class="text-blue">{{ article.source }}</span>
                         </p>
 
                     </div>
