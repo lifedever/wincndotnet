@@ -6,7 +6,7 @@
                 <div class="box box-solid box-default">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            <i class="fa fa-tag"></i> 来自 <span class="text-danger">[{{ source }}]</span> 的所有文章
+                            <i class="fa fa-soundcloud"></i> 来自 <span class="text-danger">[{{ source }}]</span> 的所有文章
                             <small class="text-blue font-12">共{{ articles.length }}篇</small>
                         </div>
                     </div>
