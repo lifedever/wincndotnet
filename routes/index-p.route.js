@@ -18,13 +18,22 @@ router.get('/:id', function (req, res, next) {
             articleService.updateById(id, {views: article.views}, function (err, raw) {
                 callback(err, article);
             });
+        },
+        function (article, callback) {
+            articleService.findPublished({
+                _id: {$ne: article.id},
+                tags: {$in: article.tags}
+            }, 0, 5, function (err, articles) {
+                callback(err, article, articles);
+            });
         }
-    ], function (err, article) {
+    ], function (err, article, articles) {
         if (err) {
             next(err);
         } else if (article) {
             res.render('user/view', {
-                article: article
+                article: article,
+                articles: articles
             })
         } else {
             res.send('article is not exist!');

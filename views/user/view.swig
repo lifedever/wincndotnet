@@ -15,7 +15,8 @@
                         <p class="small  text-center">
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
-                            <span class="ds-thread-count" data-thread-key="{{ article.id }}" data-count-type="comments"></span> 次评论
+                            <span class="ds-thread-count" data-thread-key="{{ article.id }}"
+                                  data-count-type="comments"></span> 次评论
                         </p>
                         <p class="margin5-t">
                             原文链接: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
@@ -23,7 +24,14 @@
                         <p>
                             来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
                         </p>
-
+                        <p>
+                            <b><i class="fa fa-retweet"></i> 相关文章:</b>
+                        </p>
+                        <ul>
+                            {% for a in articles %}
+                                <li><a href="/p/{{ a.id }}">{{ a.title }}</a></li>
+                            {% endfor %}
+                        </ul>
                     </div>
                     <div class="box-footer">
                         <div class="row ">
@@ -35,12 +43,14 @@
                     </div>
                 </div>
 
+
                 <div class="box box-solid box-default" id="ds-comments">
                     <div class="box-header">
                         <i class="fa fa-comment-o"></i> 添加评论
                     </div>
                     <div class="box-body">
-                        <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}" data-url="http://wincn.net/p/{{ article.id }}"></div>
+                        <div class="ds-thread" data-thread-key="{{ article.id }}" data-title="{{ article.title }}"
+                             data-url="http://wincn.net/p/{{ article.id }}"></div>
                     </div>
                 </div>
 
