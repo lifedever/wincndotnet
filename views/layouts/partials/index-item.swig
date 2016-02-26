@@ -12,7 +12,7 @@
             {% if article.views > 100 %}
                 <i class="fa fa-fire text-red" title="被很多用户查阅"></i>
             {% endif %}
-            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread" target="_blank">{{ article.title }}</a>
+            <a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
             {# <a class="bds_more" data-cmd="more" style="cursor: pointer;">
                  <small><i class="fa fa-share-alt"></i></small>
              </a>#}
@@ -51,6 +51,9 @@
             分享于 {{ article.created_at | timeFromNow }}
             •
             {{ article.views }} 次浏览
+            •
+            <a href="http://wincn.net/p/{{ article.id }}#disqus_thread"></a>
+
             {% if article.tags.length>0 %}
                 •
                 <i class="fa fa-tags"></i>
