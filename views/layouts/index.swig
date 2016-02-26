@@ -37,7 +37,7 @@
     </div>
 </footer>
 {% include 'partials/js.swig' %}
-{% block js %}
 <script id="dsq-count-scr" src="//wincndev.disqus.com/count.js" async></script>
+{% block js %}
 </body>
 </html>
