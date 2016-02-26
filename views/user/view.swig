@@ -16,7 +16,6 @@
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
                             <a href="http://wincn.net/p/{{ article.id }}#disqus_thread"></a>
-                            次评论
                         </p>
                         <p class="margin5-t">
                             原文链接： <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
