@@ -66,11 +66,11 @@ app.use(function (req, res, next) {
  * 处理Cookie
  */
 app.use(function (req, res, next) {
-    if (req.cookies[config.constant.cookie.user]) {
-        var cookieUser = JSON.parse(crypto.decrypt(req.cookies[config.constant.cookie.user], config.db.cookieSecret));
-        var user = req.session.user;
-        if (cookieUser && !user)
-            req.session.user = cookieUser;
+    var cookie = req.cookies[config.constant.cookie.user];
+    var user = req.session.user;
+    if (cookie && !user) {
+        var cookieUser = JSON.parse(crypto.decrypt(cookie, config.db.cookieSecret));
+        req.session.user = cookieUser;
     }
     next();
 });
