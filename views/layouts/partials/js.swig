@@ -1,6 +1,7 @@
 <script src="/js/jquery.min.js"></script>
 <script src="/js/app.min.js"></script>
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="/js/pace.min.js"></script>
 <script src="/lib/toastr/toastr.js"></script>
 <script>
     toastr.options = {
@@ -27,5 +28,4 @@
     {% if error.length > 0 %}
     toastr.error('{{ error }}');
     {% endif %}
-
 </script>

@@ -138,3 +138,11 @@ td {
 .margin5-t {
     margin-top: 5px;
 }
+
+.logo-beta {
+    font-size: 12px;
+    position: absolute;
+    top: 30px;
+    left: 170px;
+    color: #9D9D9D;
+}

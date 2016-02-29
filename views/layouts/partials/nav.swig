@@ -6,7 +6,12 @@
                 <span class="sr-only">Toggle navigation</span>
                 <i class="fa fa-navicon"></i>
             </button>
-            <a class="navbar-brand" href="/"><b>{{ site.title }}</b></a>
+            <a class="navbar-brand" href="/">
+                <b>
+                    {{ site.title }}
+                </b>
+                <div class="logo-beta">beta</div>
+            </a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

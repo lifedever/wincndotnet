@@ -28,7 +28,18 @@ $('.p-favorite').on('click', function (e) {
     }
 });
 
-<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+$('[data-toggle="hover"]')
+    .on('mouseover', function(){
+    var $this = $(this);
+    var target = $this.data('target');
+    $(target).removeClass('hide');
+}).on('mouseout', function(){
+    var $this = $(this);
+    var target = $this.data('target');
+    $(target).addClass('hide');
+});
+
+//多说公共JS代码 start (一个网页只需插入一次)
 var duoshuoQuery = {short_name:"gefangshuai"};
 (function() {
     var ds = document.createElement('script');
@@ -38,3 +49,4 @@ var duoshuoQuery = {short_name:"gefangshuai"};
     (document.getElementsByTagName('head')[0]
     || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
+

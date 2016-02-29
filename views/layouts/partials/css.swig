@@ -2,4 +2,5 @@
 <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
 <link rel='stylesheet' href='/lib/AdminLTE2/css/main.min.css'/>
 <link rel="stylesheet" href="/lib/toastr/toastr.css">
+<link rel="stylesheet" href="/css/dataurl.min.css">
 <link rel='stylesheet' href='/css/style.min.css'/>
