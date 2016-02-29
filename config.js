@@ -16,6 +16,9 @@ module.exports = {
         flash: {
             success: 'success',
             error: 'error'
+        },
+        cookie: {
+            user: 'connectId'
         }
     },
     tl: {

@@ -14,6 +14,7 @@ var authority = require('./lib/authority');
 var swigExtends = require('./lib/swig.extends');
 var wxRobot = require('./lib/wx.robot');
 var wxHelper = require('./lib/wx.helper');
+var crypto = require('./lib/crypto.utils');
 
 var config = require('./config');
 var app = express();
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
     secret: config.db.cookieSecret,
-    cookie: {maxAge: 30 * 60 * 1000}
+    cookie: {maxAge: 60 * 60 * 60 * 1000}
 }));
 
 app.use(flash());
@@ -58,6 +59,19 @@ app.use(function (req, res, next) {
     res.locals.success = req.flash(config.constant.flash.success);
     res.locals.error = req.flash(config.constant.flash.error);
     res.locals.session = req.session;
+    next();
+});
+
+/**
+ * 处理Cookie
+ */
+app.use(function (req, res, next) {
+    if (req.cookies[config.constant.cookie.user]) {
+        var cookieUser = JSON.parse(crypto.decrypt(req.cookies[config.constant.cookie.user], config.db.cookieSecret));
+        var user = req.session.user;
+        if (cookieUser && !user)
+            req.session.user = cookieUser;
+    }
     next();
 });
 

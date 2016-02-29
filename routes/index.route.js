@@ -2,6 +2,8 @@ var express = require('express');
 var async = require('async');
 var router = express.Router();
 
+var cryptoUtils = require('../lib/crypto.utils');
+
 var config = require('../config');
 var userService = require('../service/user.service');
 var articleService = require('../service/article.service');
@@ -48,7 +50,7 @@ router.get('/tags/:tag', function (req, res, next) {
         tags: function (callback) {
             articleService.findTags(callback);
         },
-        tag: function(callback) {
+        tag: function (callback) {
             tagService.findTag(tag, callback);
         },
         user: function (callback) {
@@ -117,7 +119,7 @@ router.post('/login', function (req, res, next) {
             if (dbUser && userService.validatePassword(user.password, dbUser.password)) {
                 req.flash(config.constant.flash.success, '欢迎回来, ' + user.username + '!');
                 req.session.user = dbUser;
-
+                res.cookie(config.constant.cookie.user, cryptoUtils.encrypt(JSON.stringify(dbUser), config.db.cookieSecret), {maxAge: 1000 * 60 * 60 * 60 * 24 * 7});
                 res.redirect(req.session.originalUrl ? req.session.originalUrl : '/');
             } else {
                 req.flash(config.constant.flash.error, '用户名或密码错误!');
@@ -181,6 +183,7 @@ router.post('/join', function (req, res, next) {
 
 router.get('/logout', function (req, res, next) {
     req.session.destroy();
+    res.clearCookie(config.constant.cookie.user);
     res.redirect('/');
 });
 
