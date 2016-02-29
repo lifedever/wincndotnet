@@ -146,3 +146,23 @@ td {
     left: 170px;
     color: #9D9D9D;
 }
+
+.article code, code {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    padding: 2px 4px;
+    font-size: 80%;
+    color: #778087;
+    margin-bottom: 5px;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+.article code a,code a {
+    color: #778087
+}
+
+code a:hover, code a:focus {
+    color: #666666
+}

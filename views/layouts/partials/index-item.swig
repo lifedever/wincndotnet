@@ -5,19 +5,7 @@
     </div>
     <div class="media-body">
         <h4 class="media-heading">
-
-            {% if article.up %}
-                <span class="label label-primary">置顶</span>
-            {% endif %}
-            {% if article.views > 100 %}
-                <i class="fa fa-fire text-red" title="被很多用户查阅"></i>
-            {% endif %}
-            <a href="/p/{{ article.id }}">{{ article.title }}</a>
-            <small class="hide" id="hover_{{ article.id }}">
-                <a href="{{ article.url }}" target="_blank" class="link-black" title="查看原文">
-                    <i class="fa fa-link"></i>
-                </a>
-            </small>
+            {% include 'index-item-title.swig' %}
             {% if session.user %}
 
                 {% if favorites.indexOf(article.id) > -1 %}
@@ -43,32 +31,6 @@
                 </a>
             {% endif %}
         </h4>
-        <small>
-            <i class="fa fa-user"></i>
-            <a href="/u/{{ article._user.username }}">
-                <b>{{ article._user.username }}</b>
-            </a>
-            分享于 {{ article.created_at | timeFromNow }}
-            •
-            {{ article.views }} 次浏览
-            •
-            <a href="/p/{{ article.id }}#ds-comments">
-                <span class="ds-thread-count" data-thread-key="{{ article.id }}" data-count-type="comments"></span> 次评论
-            </a>
-
-            {% if article.tags.length>0 %}
-                •
-                <i class="fa fa-tags"></i>
-                {% autoescape %}
-                    {{ article.tags | tags }}
-                {% endautoescape %}
-            {% endif %}
-
-        </small>
-        <small class="pull-right font-12">来自
-            <a href="/source/{{ article.source }}">
-                <span class="text-primary">{{ article.source }}</span>
-            </a>
-        </small>
+        {% include 'index-item-desc.swig' %}
     </div>
 </li>

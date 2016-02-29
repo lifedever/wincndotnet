@@ -24,8 +24,7 @@ gulp.task('script', function () {
             suffix: '.min'
         }))
         .pipe(bom())
-        .pipe(gulp.dest('./public/js'))
-        .pipe(notify({message: 'js文件处理完成'}));
+        .pipe(gulp.dest('./public/js'));
 });
 
 /**
@@ -40,8 +39,7 @@ gulp.task('cleancss', function () {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest('./public/css'))
-        .pipe(notify({message: 'css文件处理完成'}));
+        .pipe(gulp.dest('./public/css'));
 });
 
 gulp.task('default', ['script', 'cleancss']);

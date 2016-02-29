@@ -14,17 +14,10 @@
                         <ul class="media-list">
                             {% if articles.length>0 %}
                                 {% for article in articles %}
-                                    <li class="media article  margin5-r">
-                                        <div class="media-left">
-                                            <a href="#">
-                                            </a>
-                                        </div>
+                                    <li class="media article  margin5-r" data-toggle="hover" data-target="#hover_{{ article.id }}">
                                         <div class="media-body">
                                             <h4 class="media-heading">
-                                                {% if article.up %}
-                                                    <span class="label label-primary">置顶</span>
-                                                {% endif %}
-                                                <a href="/p/{{ article.id }}" target="_blank">{{ article.title }}</a>
+                                                {% include '../layouts/partials/index-item-title.swig' %}
                                                 <small>
                                                     <a href="/user/{{ session.user.username }}/favorite/remove/{{ article.id }}"
                                                        data-toggle="confirm" data-message="确认取消收藏吗？" class="pull-right small text-red">
@@ -32,27 +25,7 @@
                                                     </a>
                                                 </small>
                                             </h4>
-                                            <small>
-                                                <i class="fa fa-user"></i>
-                                                <a href="/u/{{ article._user.username }}">
-                                                    <b>{{ article._user.username }}</b>
-                                                </a>
-                                                分享于 {{ article.created_at | timeFromNow }}
-                                                •
-                                                {{ article.views }} 次浏览
-                                                {% if article.tags.length>0 %}
-                                                    •
-                                                    <i class="fa fa-tags"></i>
-                                                    {% autoescape %}
-                                                        {{ article.tags | tags }}
-                                                    {% endautoescape %}
-                                                {% endif %}
-                                            </small>
-                                            <small class="pull-right font-12">来自
-                                                <a href="/source/{{ article.source }}">
-                                                    <span class="text-primary">{{ article.source }}</span>
-                                                </a>
-                                            </small>
+                                            {% include '../layouts/partials/index-item-desc.swig' %}
                                         </div>
                                     </li>
                                 {% endfor %}

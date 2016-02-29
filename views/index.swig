@@ -33,6 +33,8 @@
                         {% endif %}
                     </div>
                 </div>
+
+                {% include 'layouts/sidebar/visitor.swig' %}
             </div>
             <div class="col-md-3">
                 {% include 'layouts/sidebar/about.swig' %}
