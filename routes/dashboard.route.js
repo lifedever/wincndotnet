@@ -10,7 +10,7 @@ var config = require('../config');
 var userService = require('../service/user.service');
 var articleService = require('../service/article.service');
 var wxService = require('../service/wx.service');
-
+var tagService = require('../service/tag.service');
 
 /**
  * 后台首页，用户列表
@@ -121,6 +121,59 @@ router.get('/articles/up/:id', function (req, res, next) {
 });
 
 
+router.get('/tags', function (req, res, next) {
+    articleService.findTags(function (err, tags) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('dashboard/tags',
+                {
+                    menu: 'dashboard',
+                    subMenu: 'tags',
+                    tags: tags
+                }
+            );
+        }
+    })
+});
+
+router.get('/tags/:tag/edit', function (req, res, next) {
+    tagService.findTag(req.params.tag, function (err, tag) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('dashboard/tag-form', {
+                tag: tag,
+                tagName: req.params.tag
+            });
+        }
+    });
+});
+
+router.post('/tags', function (req, res, next) {
+    var tag = req.body;
+    if (tag.id) {
+        tagService.updateById(tag.id, tag, function (err, raw) {
+            if (err) {
+                next(err);
+            } else {
+                req.flash(config.constant.flash.success, '编辑成功!');
+                res.redirect('/dashboard/tags');
+            }
+        });
+    } else {
+        tagService.save(tag, function (err, tag) {
+            if (err) {
+                next(err);
+            } else {
+                req.flash(config.constant.flash.success, '新增成功!');
+                res.redirect('/dashboard/tags');
+            }
+        });
+    }
+});
+
+
 router.get('/wx', function (req, res, next) {
     wxService.findRobot(function (err, robots) {
         if (err) {
@@ -165,5 +218,4 @@ router.get('/wx/delete/:id', function (req, res, next) {
         res.redirect('/dashboard/wx');
     });
 });
-
 module.exports = router;

@@ -41,7 +41,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/dashboard">用户管理</a></li>
                                 <li><a href="/dashboard/articles">文章管理</a></li>
-                                <li><a href="/dashboard/wx">配置微信</a></li>
+                                <li><a href="/dashboard/tags">标签管理</a></li>
                             </ul>
                         </li>
                     {% endif %}

@@ -5,6 +5,7 @@ var router = express.Router();
 var config = require('../config');
 var userService = require('../service/user.service');
 var articleService = require('../service/article.service');
+var tagService = require('../service/tag.service');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -47,6 +48,9 @@ router.get('/tags/:tag', function (req, res, next) {
         tags: function (callback) {
             articleService.findTags(callback);
         },
+        tag: function(callback) {
+            tagService.findTag(tag, callback);
+        },
         user: function (callback) {
             if (req.session.user)
                 userService.findById(req.session.user._id, callback);
@@ -58,7 +62,8 @@ router.get('/tags/:tag', function (req, res, next) {
         res.render('tags', {
             articles: results.articles,
             favorites: results.user.favorites,
-            tag: tag,
+            tag: results.tag,
+            tagName: tag,
             tags: results.tags
         });
     });
