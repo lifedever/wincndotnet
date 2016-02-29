@@ -5,7 +5,7 @@
             <div class="col-md-9">
                 <div class="box box-solid box-default bg-gray-light">
                     <div class="box-body">
-                        <i class="fa fa-soundcloud"></i> 来自 <span class="text-danger h3"><b>{{ source }}</b></span> 的所有文章
+                        <i class="fa fa-soundcloud"></i> 来自 <span class="text-red h3"><b>{{ source }}</b></span> 的所有文章
                         <small class="text-blue font-12">共{{ articles.length }}篇</small>
                     </div>
                 </div>

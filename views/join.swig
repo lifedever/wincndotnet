@@ -5,7 +5,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="/"><b>{{ site.title }}</b></a>
+        <a href="/" class="text-red"><b>{{site.title}}</b></a>
     </div>
 
     <div class="register-box-body">

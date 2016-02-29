@@ -22,7 +22,7 @@
 
                 {% if session.user %}
                     <li {% if menu == 'favorite' %}class="active" {% endif %}><a href="/user/{{ session.user.username }}/favorite">
-                            <i class="fa fa-bookmark"></i> 我收藏的
+                            <i class="fa fa-bookmark text-red"></i> 我收藏的
                             <span class="sr-only">(current)</span></a></li>
                 {% endif %}
             </ul>

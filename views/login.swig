@@ -5,7 +5,7 @@
 <body class="hold-transition register-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="/">{{site.title}}</a>
+        <a href="/" class="text-red"><b>{{site.title}}</b></a>
     </div>
     <div class="login-box-body">
         <p class="login-box-msg">账户登录</p>
