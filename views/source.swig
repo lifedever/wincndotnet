@@ -3,13 +3,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
-                <div class="box box-solid box-default">
-                    <div class="box-header with-border">
-                        <div class="box-title">
-                            <i class="fa fa-soundcloud"></i> 来自 <span class="text-danger">[{{ source }}]</span> 的所有文章
-                            <small class="text-blue font-12">共{{ articles.length }}篇</small>
-                        </div>
+                <div class="box box-solid box-default bg-gray-light">
+                    <div class="box-body">
+                        <i class="fa fa-soundcloud"></i> 来自 <span class="text-danger h3"><b>{{ source }}</b></span> 的所有文章
+                        <small class="text-blue font-12">共{{ articles.length }}篇</small>
                     </div>
+                </div>
+                <div class="box box-solid box-default">
                     <div class="box-body">
                         <ul class="media-list">
                             {% if articles.length>0 %}
