@@ -166,3 +166,15 @@ td {
 code a:hover, code a:focus {
     color: #666666
 }
+
+nav .form-search .form-control {
+    font-size: 12px;
+    border: none;
+    height: 100%;
+    margin-top: 5px;
+    margin-left: -10px;
+    background: transparent;
+    transition: all .3s;
+    box-sizing: border-box;
+    color: #333;
+}

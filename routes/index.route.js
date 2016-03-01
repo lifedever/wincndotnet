@@ -41,6 +41,40 @@ router.get('/', function (req, res, next) {
     });
 });
 
+router.get('/search', function (req, res, next) {
+    var q = req.query.q || '';
+    if(q!= ''){
+        async.parallel({
+            articles: function (callback) {
+                articleService.findPublishedAll({$or: [{title: new RegExp(q, 'i')}, {tags: q}]}, callback);
+            },
+            count: function (callback) {
+                articleService.count(callback);
+            },
+            tags: function (callback) {
+                articleService.findTags(callback);
+            },
+            user: function (callback) {
+                if (req.session.user)
+                    userService.findById(req.session.user._id, callback);
+                else {
+                    callback(null, {favorites: null});
+                }
+            }
+        }, function (err, results) {
+            res.render('search', {
+                articles: results.articles,
+                favorites: results.user.favorites,
+                tag: results.tag,
+                key: q,
+                tags: results.tags
+            });
+        });
+    }else{
+        res.redirect('/');
+    }
+});
+
 router.get('/tags/:tag', function (req, res, next) {
     var tag = req.params.tag;
     async.parallel({

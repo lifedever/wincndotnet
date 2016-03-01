@@ -21,11 +21,15 @@
                         <span class="sr-only">(current)</span></a></li>
 
                 {% if session.user %}
-                    <li {% if menu == 'favorite' %}class="active" {% endif %}><a href="/user/{{ session.user.username }}/favorite">
+                    <li {% if menu == 'favorite' %}class="active" {% endif %}>
+                        <a href="/user/{{ session.user.username }}/favorite">
                             <i class="fa fa-bookmark text-red"></i> 我收藏的
-                            <span class="sr-only">(current)</span></a></li>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
                 {% endif %}
             </ul>
+
             {% if session.user %}
                 <ul class="nav navbar-nav navbar-right">
                     <li {% if menu == 'share' %}class="active" {% endif %} >
@@ -61,7 +65,16 @@
                     <li><a href="/join">注册</a></li>
                 </ul>
             {% endif %}
-
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-search hidden-xs">
+                    <form class="navbar-form form-search active" action="/search" method="GET">
+                        <div class="form-group">
+                            <i class="fa btn-search fa-search"></i>
+                            <input class="form-control" name="q" type="text" value="{{ key }}" placeholder="根据标题或标签检索">
+                        </div>
+                    </form>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
