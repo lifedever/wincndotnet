@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                {% include 'layouts/sidebar/about.swig' %}
+                {% include 'layouts/sidebar/profile.swig' %}
                 {% include 'layouts/sidebar/weixin.swig' %}
                 {% include 'layouts/sidebar/tags.swig' %}
             </div>

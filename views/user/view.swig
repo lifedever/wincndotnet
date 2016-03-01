@@ -36,10 +36,12 @@
                         {% endif %}
                     </div>
                     <div class="box-footer">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-md-12">
-                                <i class="fa fa-tags"></i> 标签:
-                                {% autoescape %}{{ article.tags | tags }}{% endautoescape %}
+                                <div class="pull-left margin-r-5">
+                                    <i class="fa fa-tags"></i> 标签:
+                                </div>
+                                <div class="pull-left">{% autoescape %}{{ article.tags | tags }}{% endautoescape %}</div>
                             </div>
                         </div>
                     </div>
@@ -58,37 +60,7 @@
 
             </div>
             <div class="col-md-3">
-                <div class="box box-default box-solid">
-                    <div class="box-header with-border">
-                        <i class="fa fa-user"></i> 关于作者
-                    </div>
-                    <div class="box-body box-profile">
-                        <img class="profile-user-img img-responsive img-circle" style="border: 0px;"
-                             src="{{ article._user.email | gravatar }}" alt="User profile picture">
-
-                        <h3 class="profile-username text-center">{{ article._user.username }}</h3>
-
-                        <p class="text-muted text-center">Software Engineer</p>
-                        <p class="text-center">
-                            <small>于 <b>{{ article._user.created_at | timeFromNow }}</b> 加入本站</small>
-                        </p>
-                        {# <ul class="list-group list-group-unbordered">
-                             <li class="list-group-item">
-                                 <b>Followers</b> <a class="pull-right">1,322</a>
-                             </li>
-                             <li class="list-group-item">
-                                 <b>Following</b> <a class="pull-right">543</a>
-                             </li>
-                             <li class="list-group-item">
-                                 <b>Friends</b> <a class="pull-right">13,287</a>
-                             </li>
-                         </ul>
- #}
-                    </div>
-                    <div class="box-footer">
-                        <a href="#" class="btn btn-primary btn-block"><b>查看{{ article._user.username }}分享的所有文章</b></a>
-                    </div>
-                </div>
+                {% include '../layouts/sidebar/profile.swig' %}
                 {% include '../layouts/sidebar/weixin.swig' %}
 
             </div>

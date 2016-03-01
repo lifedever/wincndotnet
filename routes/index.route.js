@@ -66,6 +66,7 @@ router.get('/search', function (req, res, next) {
                 articles: results.articles,
                 favorites: results.user.favorites,
                 tag: results.tag,
+                menu: 'search',
                 key: q,
                 tags: results.tags
             });

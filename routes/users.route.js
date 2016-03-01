@@ -148,4 +148,32 @@ router.get('/share/parseUrl', function (req, res, next) {
         res.send(model);
     });
 });
+
+router.get('/profile', function (req, res, next) {
+    userService.findUserByUsername(req.session.user.username, function (err, user) {
+        if (err) {
+            next(err);
+        } else {
+            res.render('user/profile', {user: user, menu: 'profile'});
+        }
+    })
+});
+
+router.post('/profile', function (req, res, next) {
+    userService.updateById(req.session.user._id, {
+        website: req.body.website,    // 个人网站
+        address: req.body.address,    // 所在地点
+        github: req.body.github, // github
+        weibo: req.body.weibo, // weibo
+        job: req.body.job,      // 职业
+        signature: req.body.signature  // 个人签名
+    }, function (err, user) {
+        if (!err) {
+            req.flash(config.constant.flash.success, '修改成功!');
+            res.redirect('/user/profile');
+        }else{
+            next(err);
+        }
+    });
+});
 module.exports = router;

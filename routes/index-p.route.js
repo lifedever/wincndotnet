@@ -33,6 +33,7 @@ router.get('/:id', function (req, res, next) {
         } else if (article) {
             res.render('user/view', {
                 article: article,
+                user: article._user,
                 articles: articles
             })
         } else {
