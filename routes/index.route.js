@@ -1,5 +1,6 @@
 var express = require('express');
 var async = require('async');
+var lodash = require('lodash');
 var router = express.Router();
 
 var cryptoUtils = require('../lib/crypto.utils');
@@ -32,7 +33,7 @@ router.get('/', function (req, res, next) {
     }, function (err, results) {
         res.render('index', {
             articles: results.articles,
-            favorites: results.user.favorites,
+            favorites: results.user ? results.user.favorites : null,
             count: results.count,
             page: (Number(page) + 1),
             tags: results.tags
@@ -77,6 +78,9 @@ router.get('/search', function (req, res, next) {
 
 router.get('/archive', function (req, res, next) {
     articleService.groupByMonth(function (err, data) {
+        for (var i = 0; i < data.length; i++) {
+            data[i].articles = lodash.orderBy(data[i].articles, ['created_at'], ['desc']);
+        }
         res.render('archive', {menu: 'archive', data: data});
     });
 });
