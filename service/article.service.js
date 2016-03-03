@@ -64,8 +64,25 @@ module.exports = {
             }
         });
     },
+    groupByMonth: function (callback) {
+        Article.aggregate(
+            [
+                {
+                    $group: {
+                        _id: {month: {$month: "$created_at"}, year: {$year: "$created_at"}},
+                        articles: {$push: "$$ROOT"}
+                    }
+                },
+                {
+                    $sort: {
+                        'articles.created_at': -1
+                    }
+                }
+            ]
+        ).exec(callback);
+    },
     parseUrl: function (url, callback) {
-        if(url&&url.length > 0) {
+        if (url && url.length > 0) {
             async.waterfall([
                     function (callback) {   // 动态获取网站编码
                         superagent.get(url).end(function (err, res) {
@@ -109,7 +126,7 @@ module.exports = {
                 function (err, model) {
                     callback(err, model);
                 });
-        }else{
+        } else {
             callback(err, null);
         }
     }

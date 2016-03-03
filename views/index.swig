@@ -6,7 +6,7 @@
                 <div class="box box-solid box-default">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            <i class="fa fa-rss"></i> 分享列表
+                            <i class="fa fa-rss"></i> 列表
                             <small class="text-blue font-12">共{{ count }}篇</small>
                         </div>
                         <small class="text-red pull-right font-12">

@@ -17,13 +17,18 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li {% if menu == underfind || menu == 'index' %}class="active" {% endif %}><a href="/">
-                        分享列表
-                        <span class="sr-only">(current)</span></a></li>
+                        列表
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li {% if menu == 'archive' %}class="active" {% endif %}><a href="/archive">
+                        归档
+                        <span class="sr-only">(current)</span></a>
+                </li>
 
                 {% if session.user %}
                     <li {% if menu == 'favorite' %}class="active" {% endif %}>
                         <a href="/user/{{ session.user.username }}/favorite">
-                            <i class="fa fa-bookmark text-red"></i> 我收藏的
+                            <i class="fa fa-bookmark text-red"></i> 收藏
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>

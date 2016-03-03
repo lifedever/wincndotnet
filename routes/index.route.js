@@ -3,7 +3,6 @@ var async = require('async');
 var router = express.Router();
 
 var cryptoUtils = require('../lib/crypto.utils');
-
 var config = require('../config');
 var userService = require('../service/user.service');
 var articleService = require('../service/article.service');
@@ -43,7 +42,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/search', function (req, res, next) {
     var q = req.query.q || '';
-    if(q!= ''){
+    if (q != '') {
         async.parallel({
             articles: function (callback) {
                 articleService.findPublishedAll({$or: [{title: new RegExp(q, 'i')}, {tags: q}]}, callback);
@@ -71,9 +70,15 @@ router.get('/search', function (req, res, next) {
                 tags: results.tags
             });
         });
-    }else{
+    } else {
         res.redirect('/');
     }
+});
+
+router.get('/archive', function (req, res, next) {
+    articleService.groupByMonth(function (err, data) {
+        res.render('archive', {menu: 'archive', data: data});
+    });
 });
 
 router.get('/tags/:tag', function (req, res, next) {

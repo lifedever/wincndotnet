@@ -178,3 +178,50 @@ nav .form-search .form-control {
     box-sizing: border-box;
     color: #333;
 }
+
+.timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #eee;
+    left: 31px;
+    margin: 0;
+    border-radius: 2px;
+}
+
+.timeline>li.item:before {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    left: 27px;
+    top: 10px;
+    border-radius: 50%;
+
+    background: #ddd;
+}
+.timeline>li>.timeline-item {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0px;
+    margin-top: 0;
+    background: #fff;
+    color: #444;
+    margin-left: 40px;
+    margin-right: 15px;
+    padding: 0;
+    position: relative;
+}
+.timeline>li>.timeline-item>.timeline-header {
+    margin: 0;
+    color: #555;
+    border-bottom: none;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1.1;
+}
+
+.timeline li{
+    margin-bottom: 2px;
+}
