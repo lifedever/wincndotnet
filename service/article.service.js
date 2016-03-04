@@ -7,7 +7,7 @@ var Article = require('../model/article.model');
 
 module.exports = {
     getTags: function (value) {
-        return _.split(value, ',');
+        return _.split(_.replace(value, ' ', ''), ',');
     },
     count: function (params, callback) {
         Article.count(params).exec(callback);

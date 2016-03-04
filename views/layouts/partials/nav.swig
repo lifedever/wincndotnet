@@ -25,6 +25,11 @@
                         <span class="sr-only">(current)</span></a>
                 </li>
 
+                <li {% if menu == 'StackOverflow' %}class="active" {% endif %}><a href="/stackoverflow">
+                        <i class="fa fa-stack-overflow"></i> StackOverflow
+                        <span class="sr-only">(current)</span></a>
+                </li>
+
                 {% if session.user %}
                     <li {% if menu == 'favorite' %}class="active" {% endif %}>
                         <a href="/user/{{ session.user.username }}/favorite">
