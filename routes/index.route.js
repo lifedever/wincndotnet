@@ -87,6 +87,10 @@ router.get('/archive', function (req, res, next) {
 
 router.get('/tags/:tag', function (req, res, next) {
     var tag = req.params.tag;
+    if(tag.toLowerCase() == 'stackoverflow'){
+        res.redirect('/stackoverflow');
+        return;
+    }
     async.parallel({
         articles: function (callback) {
             articleService.findPublishedAll({tags: tag}, callback);
@@ -110,6 +114,35 @@ router.get('/tags/:tag', function (req, res, next) {
             favorites: results.user.favorites,
             tag: results.tag,
             tagName: tag,
+            tags: results.tags
+        });
+    });
+});
+
+router.get('/stackoverflow', function (req, res, next) {
+    var tag = 'StackOverflow';
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublishedAll({tags: tag}, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        },
+        tag: function (callback) {
+            tagService.findTag(tag, callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {favorites: null});
+            }
+        }
+    }, function (err, results) {
+        res.render('stackoverflow', {
+            articles: results.articles,
+            favorites: results.user.favorites,
+            menu: 'StackOverflow',
             tags: results.tags
         });
     });
