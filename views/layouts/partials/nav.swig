@@ -1,4 +1,4 @@
-<nav class="navbar navbar-white navbar-fixed-top ">
+<nav class="navbar navbar-white  navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -52,11 +52,7 @@
 
             {% if session.user %}
                 <ul class="nav navbar-nav navbar-right">
-                    <li {% if menu == 'share' %}class="active" {% endif %} >
-                        <a href="/user/share">
-                            <i class="fa fa-edit"></i> 创建分享
-                        </a>
-                    </li>
+
 
                     {% if session.user.role == 'admin' %}
                         <li class="dropdown {% if menu == 'dashboard' %}active{% endif %}">
