@@ -31,7 +31,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     border-bottom: 1px dashed #dddddd;
 }
 
-
 .article a {
     color: #333;
 }
@@ -160,7 +159,7 @@ td {
     border-radius: 4px;
 }
 
-.article code a,code a {
+.article code a, code a {
     color: #778087
 }
 
@@ -192,7 +191,7 @@ nav .form-search .form-control {
     border-radius: 2px;
 }
 
-.timeline>li.item:before {
+.timeline > li.item:before {
     position: absolute;
     height: 12px;
     width: 12px;
@@ -202,7 +201,8 @@ nav .form-search .form-control {
 
     background: #ddd;
 }
-.timeline>li>.timeline-item {
+
+.timeline > li > .timeline-item {
     -webkit-box-shadow: none;
     box-shadow: none;
     border-radius: 0px;
@@ -214,7 +214,8 @@ nav .form-search .form-control {
     padding: 0;
     position: relative;
 }
-.timeline>li>.timeline-item>.timeline-header {
+
+.timeline > li > .timeline-item > .timeline-header {
     margin: 0;
     color: #555;
     border-bottom: none;
@@ -223,6 +224,31 @@ nav .form-search .form-control {
     line-height: 1.1;
 }
 
-.timeline li{
+.timeline li {
     margin-bottom: 2px;
+}
+
+
+
+.read-source {
+    font-weight: 800;
+    animation: neon1 2s ease-in-out infinite alternate;
+}
+
+/*glow*/
+@keyframes neon1 {
+    to {
+        text-shadow: 0 0 1px #fff,
+        0 0 3px #fff,
+        0 0 5px #fff,
+        0 0 7px #FF1177,
+        0 0 9px #FF1177
+    }
+    from {
+        text-shadow: 0 0 9px #fff,
+        0 0 7px #fff,
+        0 0 5px #fff,
+        0 0 3px #FF1177,
+        0 0 1px #FF1177
+    }
 }

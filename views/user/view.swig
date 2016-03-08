@@ -16,10 +16,16 @@
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
                             <span class="ds-thread-count" data-thread-key="{{ article.id }}"
-                                  data-count-type="comments"></span> 次评论
+                                  data-count-type="comments">
+                            </span> 次评论
                         </p>
+
+                        <p class="text-center h4">
+                            获取文章详细内容，请点击 <b class="h3 text-red read-source">查看原文</b>
+                        </p>
+
                         <p class="margin5-t">
-                            原文链接: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
+                            查看原文: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
                         </p>
                         <p>
                             来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
@@ -35,8 +41,31 @@
                             </ul>
                         {% endif %}
 
-                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
-                        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                        <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#"
+                                                                                                          class="bds_tsina"
+                                                                                                          data-cmd="tsina"
+                                                                                                          title="分享到新浪微博"></a><a
+                                    href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#"
+                                                                                                       class="bds_tqq"
+                                                                                                       data-cmd="tqq"
+                                                                                                       title="分享到腾讯微博"></a><a
+                                    href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#"
+                                                                                                        class="bds_weixin"
+                                                                                                        data-cmd="weixin"
+                                                                                                        title="分享到微信"></a><a
+                                    href="#" class="bds_copy" data-cmd="copy" title="分享到复制网址"></a></div>
+                        <script>window._bd_share_config = {
+                                "common": {
+                                    "bdSnsKey": {},
+                                    "bdText": "",
+                                    "bdMini": "2",
+                                    "bdMiniList": false,
+                                    "bdPic": "",
+                                    "bdStyle": "1",
+                                    "bdSize": "24"
+                                }, "share": {}
+                            };
+                            with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
 
                     </div>
                     <div class="box-footer">
