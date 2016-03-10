@@ -1,6 +1,6 @@
 {% extends '../layouts/dashboard.swig' %}
 {% block dashboard-header %}
-<div class="pad">已有标签列表：{% autoescape %}{{ tags |tags }}{% endautoescape %}</div>
+<div class="pad"><div class="pull-left">已有标签列表：</div><div class="pull-left">{% autoescape %}{{ tags |tags }}{% endautoescape %}</div></div>
 {% endblock %}
 {% block dashboard-content %}
 <table class="table table-hover">

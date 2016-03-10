@@ -228,12 +228,33 @@ nav .form-search .form-control {
     margin-bottom: 2px;
 }
 
-
-
 .read-source {
     font-weight: 800;
-    animation: neon1 2s ease-in-out infinite alternate;
+    animation: neon1 1s ease-in-out infinite alternate;
 }
+
+.btn-share {
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+}
+
+
+div.share>a {
+    font-weight: 100;
+    font-size: 24px;
+    color: #fff;
+}
+div.share{
+    padding: 8px 10px 5px 14px;
+    position: fixed;
+    bottom: 10px;
+    right: 15px;
+    background: #EB5424;
+    border-radius: 4px;
+}
+
+
 
 /*glow*/
 @keyframes neon1 {

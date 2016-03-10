@@ -21,7 +21,7 @@
                         </p>
 
                         <p class="text-center h4">
-                            获取文章详细内容，请点击 <b class="h3 text-red read-source">查看原文</b>
+                            <b> <i class="fa fa-bullhorn text-red"></i> 获取文章详细内容，请点击 <b class="h3 text-red read-source">查看原文</b></b>
                         </p>
 
                         <p class="margin5-t">

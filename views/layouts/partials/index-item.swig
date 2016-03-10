@@ -9,11 +9,11 @@
             {% if session.user %}
 
                 {% if favorites.indexOf(article.id) > -1 %}
-                    <small class="pull-right" title="已收藏" data-toggle="tooltip">
+                    <small class="pull-right" title="已收藏" data-toggle="tooltip" data-toggle="tooltip">
                         <i class="fa fa-bookmark text-red"></i> {{ article.favorite_count }}
                     </small>
                 {% else %}
-                    <a href="/user/favorite/{{ article.id }}" title="添加收藏"
+                    <a href="/user/favorite/{{ article.id }}" data-toggle="tooltip" title="添加收藏"
                        data-toggle="tooltip"
                        class="pull-right p-favorite">
                         <small>
@@ -23,7 +23,7 @@
                 {% endif %}
 
             {% else %}
-                <a href="/login" title="登录以收藏"
+                <a href="/login" title="登录以收藏" data-toggle="tooltip"
                    class="pull-right">
                     <small>
                         <i class="fa fa-bookmark-o text-red"></i> {{ article.favorite_count }}
