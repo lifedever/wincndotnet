@@ -30,7 +30,7 @@
                                 {% if article.summary %}
                                     {{ article.summary }}
                                 {% else %}
-                                    分享者没有留下任何摘要，请直接点击“查看原文”获取文章内容
+                                    分享者没有留下任何摘要，请直接点击 <b><a  class="text-red" href="{{ article.url }}">查看原文</a></b> 获取文章内容
                                 {% endif %}
                             </div>
                             <!-- /.direct-chat-text -->

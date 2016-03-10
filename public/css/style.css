@@ -262,17 +262,18 @@ div.share{
 }
 
 .direct-chat-text:after, .direct-chat-text:before {
-    border-right-color: #eee;
+    border-right-color: #3c8dbc;
 }
 
 .direct-chat-text {
+    line-height: 24px;
     border-radius: 5px;
     position: relative;
-    padding: 5px 10px;
-    background: #eee;
-    border: 1px solid #eee;
+    padding: 10px;
+    background: #3c8dbc;
+    border: 1px solid #3c8dbc;
     margin: 5px 0 0 50px;
-    color: #666;
+    color: #fff;
 }
 
 /*glow*/
