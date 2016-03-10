@@ -37,7 +37,7 @@
                         </div>
 
 
-                        <p class=" h4">
+                        <p class="h4 margin-top">
                             <b>获取文章详细内容，请点击
                                 <b>
                                     <a href="{{ article.url }}" class="text-red read-source h3">查看原文</a>
@@ -45,7 +45,7 @@
                             </b>
                         </p>
 
-                        <div class="border-bottom margin-bottom margin-top"></div>
+                        <div class="border-bottom margin-top "></div>
                         
                         <div class="help-block small">
                             <p class="margin5-t">
