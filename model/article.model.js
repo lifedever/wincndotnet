@@ -9,6 +9,7 @@ var _getArticle = function () {
     var articleSchema = new Schema({
         title: {type: String, required: true},   // 标题
         url: {type: String},                     // 相关链接
+        summary: {type: String},                 // 摘要
         up: {type: Boolean, default: false},     // 置顶
         source: {type: String},                  // 文章来源
         views: {type: Number, default: 0},       // 阅读数

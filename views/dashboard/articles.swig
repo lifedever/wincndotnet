@@ -30,15 +30,17 @@
             <td>{% autoescape %}{{ a.tags | tags }}{% endautoescape %}</td>
             <td>{{ a.created_at | timeFromNow }}</td>
             <td>
-                {% if a.status %}
-                    <a href="/dashboard/articles/publish/{{ a.id }}/false" class="btn btn-sm btn-warning">停止发布</a>
-                    <a href="/dashboard/articles/up/{{a.id}}?up={{a.up}}" class="btn btn-sm btn-primary">置顶</a>
-                {% else %}
-                    <a href="/user/share?id={{ a.id }}" class="btn btn-sm btn-primary">编辑</a>
-                    <a href="/dashboard/articles/publish/{{ a.id }}/true" class="btn btn-sm btn-success">发布</a>
-                    <a href="/dashboard/articles/delete/{{ a.id }}" class="btn btn-sm btn-danger" data-toggle="confirm"
-                       data-message="确认删除吗?">删除</a>
-                {% endif %}
+                <div class="btn-group">
+                    <a href="/user/share?id={{ a.id }}" class="btn btn-sm btn-primary" title="编辑" data-toggle="tooltip"><i class="fa fa-edit"></i></a>
+                    {% if a.status %}
+                        <a href="/dashboard/articles/publish/{{ a.id }}/false" class="btn btn-sm btn-warning">停止发布</a>
+                        <a href="/dashboard/articles/up/{{a.id}}?up={{a.up}}" class="btn btn-sm btn-adn" title="置顶" data-toggle="tooltip"><i class="fa fa-thumb-tack"></i></a>
+                    {% else %}
+                        <a href="/dashboard/articles/publish/{{ a.id }}/true" class="btn btn-sm btn-success">发布</a>
+                        <a href="/dashboard/articles/delete/{{ a.id }}" class="btn btn-sm btn-danger" data-toggle="confirm"
+                           data-message="确认删除吗?"><i class="fa fa-trash" title="删除" data-toggle="tooltip"></i></a>
+                    {% endif %}
+                </div>
             </td>
         </tr>
     {% endfor %}

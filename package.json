@@ -25,7 +25,8 @@
     "superagent-charset": "^0.1.1",
     "swig": "^1.4.2",
     "utility": "^1.6.0",
-    "wechat": "^2.0.3"
+    "wechat": "^2.0.3",
+    "xss": "^0.2.10"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

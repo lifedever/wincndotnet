@@ -31,6 +31,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="summary" class="col-sm-2 control-label">摘要</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="4" name="summary" id="summary" placeholder="简单描述一下所分享内容的摘要，会给您带来更多的访问量" required>{{ article.summary }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="source" class="col-sm-2 control-label">来源</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="source" name="source" required

@@ -1,5 +1,6 @@
 var express = require('express');
 var async = require('async');
+var xss = require('xss');
 var router = express.Router();
 
 var articleService = require('../service/article.service');
@@ -114,7 +115,11 @@ router.get('/share', function (req, res, next) {
 router.post('/share', function (req, res, next) {
     var article = req.body;
     var user = req.session.user;
-
+    article.summary = xss(article.summary, {
+        whiteList: [],        // 白名单为空，表示过滤所有标签
+        stripIgnoreTag: true,      // 过滤所有非白名单标签的HTML
+        stripIgnoreTagBody: ['script'] // script标签较特殊，需要过滤标签中间的内容
+    });
     article._user = user._id;
     article.tags = articleService.getTags(article.articleTags);
     if (article.id) {
@@ -138,8 +143,6 @@ router.post('/share', function (req, res, next) {
             }
         })
     }
-
-
 });
 
 router.get('/share/parseUrl', function (req, res, next) {
@@ -171,7 +174,7 @@ router.post('/profile', function (req, res, next) {
         if (!err) {
             req.flash(config.constant.flash.success, '修改成功!');
             res.redirect('/user/profile');
-        }else{
+        } else {
             next(err);
         }
     });

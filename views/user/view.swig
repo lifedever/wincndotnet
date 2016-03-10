@@ -13,23 +13,48 @@
 
                         </h1>
                         <p class="small  text-center">
+                            <i class="fa fa-user"></i> <b>{{ user.username }}</b>
+                            分享于 {{ article.created_at | timeFromNow }}
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
                             <span class="ds-thread-count" data-thread-key="{{ article.id }}"
                                   data-count-type="comments">
                             </span> 次评论
                         </p>
+                        <div class="direct-chat-msg">
 
-                        <p class="text-center h4">
-                            <b> <i class="fa fa-bullhorn text-red"></i> 获取文章详细内容，请点击 <b class="h3 text-red read-source">查看原文</b></b>
+                            <!-- /.direct-chat-info -->
+                            <img class="direct-chat-img" src="{{ user.email | gravatar }}" alt="message user image">
+                            <!-- /.direct-chat-img -->
+                            <div class="direct-chat-text ">
+                                {% if article.summary %}
+                                    {{ article.summary }}
+                                {% else %}
+                                    分享者没有留下任何摘要，请直接点击“查看原文”获取文章内容
+                                {% endif %}
+                            </div>
+                            <!-- /.direct-chat-text -->
+                        </div>
+
+
+                        <p class=" h4">
+                            <b>获取文章详细内容，请点击
+                                <b>
+                                    <a href="{{ article.url }}" class="text-red read-source h3">查看原文</a>
+                                </b>
+                            </b>
                         </p>
 
-                        <p class="margin5-t">
-                            查看原文: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
-                        </p>
-                        <p>
-                            来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
-                        </p>
+                        <div class="border-bottom margin-bottom margin-top"></div>
+                        
+                        <div class="help-block small">
+                            <p class="margin5-t">
+                                原文: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
+                            </p>
+                            <p>
+                                来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
+                            </p>
+                        </div>
                         {% if articles.length> 0 %}
                             <p>
                                 <b><i class="fa fa-retweet"></i> 相关文章:</b>
