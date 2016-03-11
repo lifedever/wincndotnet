@@ -113,7 +113,7 @@
                             <ul class="list-unstyled">
                                 {% for a in articles %}
                                     <li>
-                                         <a class="help-block" href="/p/{{ a.title }}">{{ loop.index }}. {{ a.title }}</a>
+                                         <a class="help-block" href="/p/{{ a.id }}">{{ loop.index }}. {{ a.title }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
