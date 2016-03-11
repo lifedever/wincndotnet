@@ -24,6 +24,6 @@
         </dl>
     </div>
     <div class="box-footer">
-        <a href="/u/{{ user.username }}" class="btn btn-link btn-block text-red"><b>查看{{ user.username }}分享的所有文章</b></a>
+        <a href="/u/{{ user.username }}" class="btn btn-link btn-block text-primary"><b>查看{{ user.username }}分享的所有文章</b></a>
     </div>
 </div>

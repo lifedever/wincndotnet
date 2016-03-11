@@ -265,6 +265,10 @@ div.share{
     border-right-color: #3c8dbc;
 }
 
+.text-italic {
+    font-style: italic;
+}
+
 .direct-chat-text {
     line-height: 24px;
     border-radius: 5px;

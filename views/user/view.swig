@@ -55,6 +55,9 @@
                                 来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
                             </p>
                         </div>
+                        <p class="text-italic"><i class="fa fa-warning text-red"></i> 文章版权归 <b class="text-blue">{{ article.source }}</b> 所有，转载请注明出处!</p>
+
+
                         {% if articles.length> 0 %}
                             <p>
                                 <b><i class="fa fa-retweet"></i> 相关文章:</b>
