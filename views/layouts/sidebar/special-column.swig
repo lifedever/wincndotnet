@@ -1,4 +1,4 @@
-<div class="box box-solid box-default">
+<div class="box box-solid ">
     <div class="box-header with-border text-blue">
         <div class="box-title"><i class="fa fa-book"></i> <b>专栏推荐</b></div>
     </div>

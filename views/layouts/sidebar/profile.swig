@@ -1,6 +1,6 @@
-<div class="box box-default box-solid">
+<div class="box  box-solid">
     <div class="box-header with-border">
-        <i class="fa fa-user"></i> 分享者信息
+        <div class="box-title"><i class="fa fa-user"></i> 分享者信息</div>
     </div>
     <div class="box-body box-profile">
         <img class="profile-user-img img-responsive img-circle" style="border: 0px;"

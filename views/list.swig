@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-9">
                 {% include 'layouts/sidebar/special-column.swig' %}
-                <div class="box box-solid box-default">
+                <div class="box box-solid ">
                     <div class="box-header with-border">
                         <div class="box-title">
                             <i class="fa fa-rss"></i> 所有分享列表

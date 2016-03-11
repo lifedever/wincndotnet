@@ -1,6 +1,6 @@
-<div class="box box-solid box-default">
+<div class="box box-solid ">
     <div class="box-header with-border">
-        关于<b>{{ site.title }}</b>
+        <div class="box-title">关于<b>{{ site.title }}</b></div>
     </div>
     <div class="box-body">
         <p>
