@@ -6,7 +6,7 @@
             {% endif %}
 <a href="/p/{{ article.id }}">{{ article.title }}</a>
 <small class="hide" id="hover_{{ article.id }}">
-    <a href="{{ article.url }}" target="_blank" class="link-black" title="查看原文">
+    <a href="{{ article.url }}" target="_blank" class="link-black" title="直接查看原文">
         <i class="fa fa-link"></i>
     </a>
 </small>

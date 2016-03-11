@@ -17,9 +17,12 @@
                             分享于 {{ article.created_at | timeFromNow }}
                             <i class="fa fa-eye"> </i> {{ article.views }} 次浏览
                             <i class="fa fa-comments-o"> </i>
-                            <span class="ds-thread-count" data-thread-key="{{ article.id }}"
-                                  data-count-type="comments">
-                            </span> 次评论
+                            <a href="#ds-comments">
+                                <span class="ds-thread-count" data-thread-key="{{ article.id }}"
+                                      data-count-type="comments">
+                            </span>
+                            </a>
+                            次评论
                         </p>
                         <div class="direct-chat-msg">
 
@@ -30,7 +33,8 @@
                                 {% if article.summary %}
                                     {{ article.summary }}
                                 {% else %}
-                                    分享者没有留下任何摘要，请直接点击 <b><a  class="text-red" href="{{ article.url }}">查看原文</a></b> 获取文章内容
+                                    分享者没有留下任何摘要，请直接点击 <b><a class="text-white"
+                                                            href="{{ article.url }}">查看原文</a></b> 获取文章内容
                                 {% endif %}
                             </div>
                             <!-- /.direct-chat-text -->
@@ -46,7 +50,7 @@
                         </p>
 
                         <div class="border-bottom margin-top "></div>
-                        
+
                         <div class="help-block small">
                             <p class="margin5-t">
                                 原文: <a href="{{ article.url }}" target="_blank">{{ article.url }}</a>
@@ -55,19 +59,10 @@
                                 来自: <a href="/source/{{ article.source }}">{{ article.source }}</a>
                             </p>
                         </div>
-                        <p class="text-italic"><i class="fa fa-warning text-red"></i> 文章版权归 <b class="text-blue">{{ article.source }}</b> 所有，转载请注明出处!</p>
+                        <p class="text-italic"><i class="fa fa-warning text-red"></i> 文章版权归 <b
+                                    class="text-blue">{{ article.source }}</b> 所有，转载请注明出处!</p>
 
 
-                        {% if articles.length> 0 %}
-                            <p>
-                                <b><i class="fa fa-retweet"></i> 相关文章:</b>
-                            </p>
-                            <ul>
-                                {% for a in articles %}
-                                    <li><a href="/p/{{ a.id }}">{{ a.title }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
 
                         <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#"
                                                                                                           class="bds_tsina"
@@ -108,6 +103,23 @@
                     </div>
                 </div>
 
+
+                <div class="box box-solid box-default">
+                    <div class="box-header with-border">
+                        <i class="fa fa-retweet"></i> 相关文章
+                    </div>
+                    <div class="box-body">
+                        {% if articles.length> 0 %}
+                            <ul class="list-unstyled">
+                                {% for a in articles %}
+                                    <li>
+                                         <a class="help-block" href="/p/{{ a.title }}">{{ loop.index }}. {{ a.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
 
                 <div class="box box-solid box-default" id="ds-comments">
                     <div class="box-header">

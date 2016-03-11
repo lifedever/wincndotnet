@@ -31,7 +31,7 @@ router.get('/:id', function (req, res, next) {
         if (err) {
             next(err);
         } else if (article) {
-            res.render('user/view', {
+            res.render('p/view', {
                 article: article,
                 user: article._user,
                 articles: articles
