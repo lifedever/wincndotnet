@@ -11,9 +11,9 @@
                             {% for item in data %}
 
                                 <li class="time-label">
-                                <span class="label bg-blue">
-                                    {{ item._id.year }}年{{ item._id.month }}月
-                                </span>
+                                    <span class="label bg-blue">
+                                        {{ item._id.year }}年{{ item._id.month }}月
+                                    </span>
                                 </li>
                                 {% for article in item.articles %}
                                     <li class="item">
@@ -23,6 +23,7 @@
 
                                             <h3 class="timeline-header no-border">
                                                 <div class="pull-left margin5-r">
+                                                    <b><a href="/source/{{ article.source }}" class="text-red">{{ article.source }}: </a></b>
                                                     <a href="{{ article.url }}">{{ article.title }}</a>
                                                 </div>
                                                 {% autoescape %}

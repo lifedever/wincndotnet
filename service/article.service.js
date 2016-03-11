@@ -51,6 +51,23 @@ module.exports = {
             callback(err, _.uniq(tags));
         });
     },
+    findSources: function (callback) {
+        Article.aggregate(
+            [
+                {
+                    $group: {
+                        _id: {source: '$source'},
+                        articles: {$push: "$$ROOT"}
+                    }
+                },
+                {
+                    $sort: {
+                        'articles.created_at': -1
+                    }
+                }
+            ]
+        ).exec(callback);
+    },
     updateById: function (id, params, callback) {
         Article.update({_id: id}, params, callback);
     },

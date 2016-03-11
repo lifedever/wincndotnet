@@ -13,7 +13,6 @@ var tagService = require('../service/tag.service');
 router.get('/', function (req, res, next) {
     var page = req.query.page || 0;
     async.parallel({
-
         articles: function (callback) {
             articleService.findPublished({}, page * 10, 10, callback);
         },
@@ -31,10 +30,15 @@ router.get('/', function (req, res, next) {
             }
         }
     }, function (err, results) {
-        res.render('index', {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.render('list', {
             articles: results.articles,
             favorites: results.user ? results.user.favorites : null,
             count: results.count,
+            menu: 'index',
             page: (Number(page) + 1),
             tags: results.tags
         });
@@ -87,7 +91,7 @@ router.get('/archive', function (req, res, next) {
 
 router.get('/tags/:tag', function (req, res, next) {
     var tag = req.params.tag;
-    if(tag.toLowerCase() == 'stackoverflow'){
+    if (tag.toLowerCase() == 'stackoverflow') {
         res.redirect('/stackoverflow');
         return;
     }
@@ -148,6 +152,32 @@ router.get('/stackoverflow', function (req, res, next) {
     });
 });
 
+router.get('/github', function (req, res, next) {
+    var source = 'Github';
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublishedAll({source: new RegExp(source, 'i')}, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {favorites: null});
+            }
+        }
+    }, function (err, results) {
+        res.render('github', {
+            articles: results.articles,
+            favorites: results.user.favorites,
+            source: source,
+            menu: 'github',
+            tags: results.tags
+        });
+    });
+});
 router.get('/source/:source', function (req, res, next) {
     var source = req.params.source;
     async.parallel({

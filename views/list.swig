@@ -3,10 +3,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-9">
+                {% include 'layouts/sidebar/special-column.swig' %}
                 <div class="box box-solid box-default">
                     <div class="box-header with-border">
                         <div class="box-title">
-                            <i class="fa fa-rss"></i> 列表
+                            <i class="fa fa-rss"></i> 所有分享列表
                             <small class="text-blue font-12">共{{ count }}篇</small>
                         </div>
                         <small class="text-red pull-right font-12">
@@ -34,12 +35,12 @@
                     </div>
                 </div>
 
-                {% include 'layouts/sidebar/visitor.swig' %}
             </div>
             <div class="col-md-3">
                 {% include 'layouts/sidebar/about.swig' %}
                 {% include 'layouts/sidebar/weixin.swig' %}
                 {% include 'layouts/sidebar/tags.swig' %}
+                {% include 'layouts/sidebar/visitor.swig' %}
             </div>
         </div>
     </div>
