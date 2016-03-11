@@ -21,6 +21,7 @@ module.exports = {
             user: 'connectId'
         }
     },
+    // 图灵机器人配置信息
     tl: {
         api: 'http://www.tuling123.com/openapi/api',
         key: '080cb4400d17375660c8b49e25994125'
