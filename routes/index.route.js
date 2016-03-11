@@ -124,16 +124,13 @@ router.get('/tags/:tag', function (req, res, next) {
 });
 
 router.get('/stackoverflow', function (req, res, next) {
-    var tag = 'StackOverflow';
+    var source = 'StackOverflow';
     async.parallel({
         articles: function (callback) {
-            articleService.findPublishedAll({tags: tag}, callback);
+            articleService.findPublishedAll({source: new RegExp(source, 'i')}, callback);
         },
         tags: function (callback) {
             articleService.findTags(callback);
-        },
-        tag: function (callback) {
-            tagService.findTag(tag, callback);
         },
         user: function (callback) {
             if (req.session.user)

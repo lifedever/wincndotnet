@@ -5,7 +5,7 @@
         </div>
         <div class="box-body">
             {% for user in favoriteUsers %}
-                <img class="direct-chat-img" src="{{ user.email | gravatar }}" alt="message user image">
+                <a href="/u/{{ user.username }}"><img class="direct-chat-img" src="{{ user.email | gravatar }}" alt="message user image"></a>
             {% endfor %}
         </div>
     </div>
