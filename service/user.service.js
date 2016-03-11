@@ -22,6 +22,9 @@ module.exports = {
     findById: function (id, callback) {
         User.findById(id, callback);
     },
+    findByFavoriteArticle: function (articleId, callback) {
+        User.find({favorites: articleId}).exec(callback);
+    },
     deleteById: function (id, callback) {
         User.remove({_id: id}, callback);
     },

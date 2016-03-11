@@ -15,7 +15,13 @@ router.get('/:username', function (req, res, next) {
     userService.findUserByUsername(username, function (err, user) {
         if (err) {
             next(err);
-        } else {
+        } if(!user){
+            err = {
+                code: 500,
+                message: 'user "' + username + '" is not exist!'
+            };
+            next(err);
+        }else {
             async.parallel({
                 articles: function (callback) {
                     articleService.findPublishedAll({_user: user._id}, callback);

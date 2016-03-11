@@ -5,6 +5,7 @@ var lodash = require('lodash');
 var router = express.Router();
 
 var articleService = require('../service/article.service');
+var userService = require('../service/user.service');
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
@@ -26,14 +27,20 @@ router.get('/:id', function (req, res, next) {
             }, 0, 5, function (err, articles) {
                 callback(err, article, articles);
             });
+        },
+        function (article, articles, callback) {
+            userService.findByFavoriteArticle(id, function (err, users) {
+                callback(err, article, articles, users);
+            });
         }
-    ], function (err, article, articles) {
+    ], function (err, article, articles, favoriteUsers) {
         if (err) {
             next(err);
         } else if (article) {
             res.render('p/view', {
                 article: article,
                 user: article._user,
+                favoriteUsers: favoriteUsers,
                 articles: articles
             })
         } else {

@@ -127,6 +127,7 @@
             </div>
             <div class="col-md-3">
                 {% include '../layouts/sidebar/profile.swig' %}
+                {% include '../layouts/sidebar/favorite-users.swig' %}
                 {% include '../layouts/sidebar/weixin.swig' %}
 
             </div>
