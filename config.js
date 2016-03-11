@@ -6,7 +6,7 @@ module.exports = {
     site: {
         title: 'WincnDEV',
         description: '开源、分享，专注开发，用Coding创造财富',
-        version: '1.0.1'
+        version: '1.1.0'
     },
     db: {
         cookieSecret: 'blogbynodesecret',
