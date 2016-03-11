@@ -62,7 +62,18 @@
                         <p class="text-italic"><i class="fa fa-warning text-red"></i> 文章版权归 <b
                                     class="text-blue">{{ article.source }}</b> 所有，转载请注明出处!</p>
 
-
+                        <div class="border-bottom margin"></div>
+                        {% if articles.length> 0 %}
+                            
+                            <dl>
+                                <dt>相关文章:</dt>
+                                {% for a in articles %}
+                                    <dd>
+                                        <a class="help-block" href="/p/{{ a.id }}">{{ loop.index }}. {{ a.title }}</a>
+                                    </dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
 
                         <div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#"
                                                                                                           class="bds_tsina"
@@ -100,24 +111,6 @@
                                 <div class="pull-left">{% autoescape %}{{ article.tags | tags }}{% endautoescape %}</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-
-                <div class="box box-solid box-default">
-                    <div class="box-header with-border">
-                        <i class="fa fa-retweet"></i> 相关文章
-                    </div>
-                    <div class="box-body">
-                        {% if articles.length> 0 %}
-                            <ul class="list-unstyled">
-                                {% for a in articles %}
-                                    <li>
-                                         <a class="help-block" href="/p/{{ a.id }}">{{ loop.index }}. {{ a.title }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
                     </div>
                 </div>
 

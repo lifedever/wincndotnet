@@ -301,3 +301,9 @@ div.share{
 .text-white {
     color: white;
 }
+.pace .pace-progress {
+    display: none;
+    top: 0;
+}
+.pace .pace-progress-inner {
+}
