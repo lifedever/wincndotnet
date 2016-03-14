@@ -24,6 +24,19 @@
                             </a>
                             次评论
                         </p>
+                        <p>
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 文章查看页广告 -->
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-client="ca-pub-9785118418487965"
+   data-ad-slot="1994284130"
+   data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                        </p>
+
                         <div class="direct-chat-msg">
 
                             <!-- /.direct-chat-info -->
@@ -64,7 +77,7 @@
 
                         <div class="border-bottom margin"></div>
                         {% if articles.length> 0 %}
-                            
+
                             <dl>
                                 <dt>相关文章:</dt>
                                 {% for a in articles %}
