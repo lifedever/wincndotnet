@@ -7,7 +7,6 @@
         <h4 class="media-heading">
             {% include 'index-item-title.swig' %}
             {% if session.user %}
-
                 {% if favorites.indexOf(article.id) > -1 %}
                     <small class="pull-right" title="已收藏" data-toggle="tooltip" data-toggle="tooltip">
                         <i class="fa fa-bookmark text-red"></i> {{ article.favorite_count }}
@@ -21,7 +20,6 @@
                         </small>
                     </a>
                 {% endif %}
-
             {% else %}
                 <a href="/login" title="登录以收藏" data-toggle="tooltip"
                    class="pull-right">
