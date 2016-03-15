@@ -234,10 +234,7 @@ router.get('/login', function (req, res, next) {
     if (req.session.user) {
         res.redirect('/');
         return;
-    } else {
-        next();
     }
-}, function (req, res, next) {
     geetest.register(function (err, challenge) {
         if (err) {
             next(err);
@@ -246,10 +243,8 @@ router.get('/login', function (req, res, next) {
             res.render('login', {
                 challenge: challenge
             });
-        }else{
-            res.render('login', {
-
-            });
+        } else {
+            res.render('login', {});
         }
     });
 });
@@ -287,11 +282,10 @@ router.get('/join', function (req, res, next) {
             res.render('join', {
                 challenge: challenge
             });
-        }else{
+        } else {
             res.render('join', {});
         }
     });
-
 });
 
 router.post('/join', function (req, res, next) {
