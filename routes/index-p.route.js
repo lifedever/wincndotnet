@@ -23,6 +23,18 @@ router.get('/:id/redirect', function (req, res, next) {
     }
 });
 
+router.get('/:id/preview', function (req, res, next) {
+    var id = req.params.id;
+    articleService.findById(id, function(err, article) {
+        if(err) {
+            next(err);
+        }else{
+            res.send(article.summary);
+        }
+    });
+});
+
+
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
     async.waterfall([
