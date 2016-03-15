@@ -254,11 +254,8 @@ router.get('/login', function (req, res, next) {
     });
 });
 
-router.get('/captcha-validate', function(req, res, next){
 
-});
-
-ruter.post('/login', function (req, res, next) {
+router.post('/login', function (req, res, next) {
     var user = req.body;
     userService.findUserByUsername(user.username, function (err, dbUser) {
         if (err) {
