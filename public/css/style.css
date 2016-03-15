@@ -307,3 +307,7 @@ div.share{
 }
 .pace .pace-progress-inner {
 }
+
+#captcha-box {
+    margin: 15px 0 20px;
+}

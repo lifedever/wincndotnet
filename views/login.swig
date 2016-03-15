@@ -5,7 +5,7 @@
 <body class="hold-transition register-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="/" class="text-red"><b>{{site.title}}</b></a>
+        <a href="/" class="text-red"><b>{{ site.title }}</b></a>
     </div>
     <div class="login-box-body">
         <p class="login-box-msg">账户登录</p>
@@ -18,7 +18,8 @@
                 <input type="password" class="form-control" name="password" placeholder="密码" required>
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-block btn-flat">登 录</button>
+            <div id="captcha-box"></div>
+            <button type="submit" class="btn btn-primary btn-block btn-flat" id="submitBtn">登 录</button>
         </form>
 
         <div class="social-auth-links text-center">
@@ -29,5 +30,25 @@
     </div>
 </div>
 {% include 'layouts/partials/js.swig' %}
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+    var captchaObj = new Geetest({
+        gt: '8990504bd745255065b4cb49b5585efc',
+        challenge: '{{ challenge }}'
+    }); // 实例化，config为配置参数
+    captchaObj.appendTo("#captcha-box"); // 绑定到id为captcha的元素上
+    captchaObj.onSuccess(function () {
+        // 成功回调
+    });
+    $('form').submit(function () {
+        var result = captchaObj.getValidate(); // 获取成功后的验证信息，失败是返回false
+        if(result){
+
+        }else{
+            return false;
+        }
+    });
+
+</script>
 </body>
 </html>

@@ -15,6 +15,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-session": "^1.13.0",
+    "geetest": "^0.5.4",
     "gravatar": "^1.4.0",
     "lodash": "^4.4.0",
     "moment": "^2.11.2",
