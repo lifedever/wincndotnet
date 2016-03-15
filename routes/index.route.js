@@ -279,7 +279,19 @@ router.post('/login', function (req, res, next) {
 });
 
 router.get('/join', function (req, res, next) {
-    res.render('join', {});
+    geetest.register(function (err, challenge) {
+        if (err) {
+            next(err);
+        }
+        if (challenge) {
+            res.render('join', {
+                challenge: challenge
+            });
+        }else{
+            res.render('join', {});
+        }
+    });
+
 });
 
 router.post('/join', function (req, res, next) {

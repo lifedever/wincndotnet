@@ -29,6 +29,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
+                    <div id="captcha-box"></div>
                     <button type="submit" class="btn btn-primary btn-block btn-flat">注册</button>
                 </div>
             </div>
@@ -41,5 +42,25 @@
     </div>
 </div>
 {% include 'layouts/partials/js.swig' %}
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+    var captchaObj = new Geetest({
+        gt: '8990504bd745255065b4cb49b5585efc',
+        challenge: '{{ challenge }}'
+    }); // 实例化，config为配置参数
+    captchaObj.appendTo("#captcha-box"); // 绑定到id为captcha的元素上
+    captchaObj.onSuccess(function () {
+        // 成功回调
+    });
+    $('form').submit(function () {
+        var result = captchaObj.getValidate(); // 获取成功后的验证信息，失败是返回false
+        if(result){
+
+        }else{
+            return false;
+        }
+    });
+
+</script>
 </body>
 </html>
