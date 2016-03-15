@@ -29,21 +29,35 @@ $('.p-favorite').on('click', function (e) {
 });
 
 $('[data-toggle="hover"]')
-    .on('mouseover', function(){
-    var $this = $(this);
-    var target = $this.data('target');
-    $(target).removeClass('hide');
-}).on('mouseout', function(){
+    .on('mouseover', function () {
+        var $this = $(this);
+        var target = $this.data('target');
+        $(target).removeClass('hide');
+    }).on('mouseout', function () {
     var $this = $(this);
     var target = $this.data('target');
     $(target).addClass('hide');
 });
 
+$('a.article-title').on('click', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var id = $this.data('id');
+    $('.load-article').removeClass('hidden');
+
+    $.get('/p/' + id + '/redirect', {
+        id: id
+    }, function (url) {
+        location.href = url;
+    });
+});
+
 //多说公共JS代码 start (一个网页只需插入一次)
-var duoshuoQuery = {short_name:"gefangshuai"};
-(function() {
+var duoshuoQuery = {short_name: "gefangshuai"};
+(function () {
     var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
+    ds.type = 'text/javascript';
+    ds.async = true;
     ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
     ds.charset = 'UTF-8';
     (document.getElementsByTagName('head')[0]

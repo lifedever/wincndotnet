@@ -7,9 +7,24 @@ var router = express.Router();
 var articleService = require('../service/article.service');
 var userService = require('../service/user.service');
 
+router.get('/:id/redirect', function (req, res, next) {
+    var id = req.params.id;
+    var user = req.session.user;
+    if (user) {     // 用户已登录，跳转到查看页
+        res.send('/p/' + id);
+    }else{  // 用户没登录，跳转到文章源地址
+        articleService.findById(id, function(err, article) {
+            if(err) {
+                next(err);
+            }else{
+                res.send(article.url);
+            }
+        });
+    }
+});
+
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;
-
     async.waterfall([
         function (callback) {
             articleService.findById(id, callback);
@@ -48,7 +63,6 @@ router.get('/:id', function (req, res, next) {
         }
 
     });
-
 });
 
 module.exports = router;

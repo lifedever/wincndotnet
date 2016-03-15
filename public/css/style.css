@@ -311,3 +311,16 @@ div.share{
 #captcha-box {
     margin: 15px 0 20px;
 }
+
+.load-article {
+    position: fixed;
+    width: 80px;
+    background: #EB5424;
+    color: #fff;
+    top: 70px;
+    padding: 2px 5px;
+    left: 50%;
+    margin-left: -60px;
+    border-radius: 4px;
+    font-size: 12px;
+}

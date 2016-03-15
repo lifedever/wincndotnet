@@ -10,6 +10,9 @@
     {#<a class="btn btn-app bg-red btn-share" href="/user/share">
         <i class="fa fa-edit"></i> 创建分享
     </a>#}
+
+    <div class="load-article hidden">内容加载中...</div>
+
     <div class="share" title="创建分享" data-toggle="tooltip">
         <a href="/user/share"><i class="fa fa-edit"></i></a>
     </div>
