@@ -56,19 +56,7 @@ $('a.article-preview').on('click', function (e) {
     e.preventDefault();
     var $this = $(this);
     var target = $this.data('target');
-    var url = $this.attr('href');
-    $(target).slideToggle('normal', function () {
-        $.ajax({
-            url: url,
-            type: 'get',
-            cache: true,
-            success: function (data) {
-                $(target).find('div.box-body').html(data || '分享者没有留下任何摘要，请直接点击<b><a class="text-blue" href="{{ article.url }}">查看原文</a></b>获取文章内容');
-            }
-        });
-    });
-
-
+    $(target).slideToggle('normal');
 });
 
 //多说公共JS代码 start (一个网页只需插入一次)

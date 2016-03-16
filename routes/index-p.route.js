@@ -30,7 +30,7 @@ router.get('/:id/preview', function (req, res, next) {
         if (err) {
             next(err);
         } else {
-            res.send(article.summary);
+            res.send(article);
         }
     });
 });
