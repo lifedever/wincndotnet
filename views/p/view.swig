@@ -30,15 +30,7 @@
                             </a>
                             次评论
                         </p>
-                        <p>
-                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                            <!-- 文章查看页广告 -->
-                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9785118418487965"
-                                 data-ad-slot="1994284130" data-ad-format="auto"></ins>
-                            <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </p>
+
 
                         <div class="direct-chat-msg">
 
@@ -46,7 +38,7 @@
                             <img class="direct-chat-img" src="{{ user.email | gravatar }}" alt="message user image">
                             <!-- /.direct-chat-img -->
                             <div class="direct-chat-text ">
-                                {% if article.summary %}
+                                {% if article.summary.trim.length>0 %}
                                     {{ article.summary }}
                                 {% else %}
                                     分享者没有留下任何摘要，请直接点击
@@ -66,7 +58,6 @@
                                 </b>
                             </b>
                         </p>
-
                         <div class="border-bottom margin-top "></div>
 
                         <div class="help-block small">
@@ -79,6 +70,7 @@
                                 <a href="/source/{{ article.source }}">{{ article.source }}</a>
                             </p>
                         </div>
+                        <p id="imgsLoad"></p>
                         <p class="text-italic">
                             <i class="fa fa-warning text-red"></i>
                             文章版权归
@@ -87,7 +79,6 @@
 
                         <div class="border-bottom margin"></div>
                         {% if articles.length > 0 %}
-
                             <dl>
                                 <dt>相关文章:</dt>
                                 {% for a in articles %}
@@ -163,4 +154,8 @@
     </div>
 {% endblock %}
 
-{% block js %}{% endblock %}
+{% block js %}
+    <script>
+        loadViewImgs('{{ article.url }}', '#imgsLoad');
+    </script>
+{% endblock %}

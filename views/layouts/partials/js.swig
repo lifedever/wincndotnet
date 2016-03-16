@@ -3,6 +3,7 @@
 <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="/js/pace.min.js"></script>
 <script src="/lib/toastr/toastr.js"></script>
+<script src="/lib/fancybox/jquery.fancybox.js"></script>
 <script>
     toastr.options = {
         "closeButton": false,

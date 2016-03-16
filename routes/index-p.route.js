@@ -1,6 +1,7 @@
 var express = require('express');
 var async = require('async');
-var superagent = require('superagent')
+var superagent = require('superagent');
+var cheerio = require('cheerio');
 var lodash = require('lodash');
 
 var router = express.Router();
@@ -35,6 +36,24 @@ router.get('/:id/preview', function (req, res, next) {
     });
 });
 
+router.get('/fetch-imgs', function (req, res, next) {
+    var url = req.query.url;
+    superagent.get(url).end(function (err, response) {
+        var imgs = new Array();
+        if (err) {
+            res.send({imgs: imgs});
+            return;
+        }
+        var $ = cheerio.load(response.text);
+        $('body img').each(function (i, elem) {
+            imgs.push({
+                url: $(this).attr('src')
+            });
+            if (i == 7) return false;
+        });
+        res.render('p/imgs', {imgs: imgs});
+    });
+});
 
 router.get('/:id', function (req, res, next) {
     var id = req.params.id;

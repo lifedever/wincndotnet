@@ -59,6 +59,13 @@ $('a.article-preview').on('click', function (e) {
     $(target).slideToggle('normal');
 });
 
+var loadViewImgs = function (url, selector) {
+    $.get('/p/fetch-imgs', {url: url}, function (data) {
+        $(selector).html(data);
+    });
+};
+
+
 //多说公共JS代码 start (一个网页只需插入一次)
 var duoshuoQuery = {short_name: "gefangshuai"};
 (function () {
@@ -71,3 +78,4 @@ var duoshuoQuery = {short_name: "gefangshuai"};
     || document.getElementsByTagName('body')[0]).appendChild(ds);
 })();
 
+$('a.fancybox').fancybox();
