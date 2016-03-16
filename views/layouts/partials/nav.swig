@@ -20,6 +20,10 @@
                         列表
                         <span class="sr-only">(current)</span></a>
                 </li>
+                <li {% if menu == 'hot' %}class="active" {% endif %}><a href="/hot">
+                        <i class="fa fa-fire text-red"></i> 热门
+                        <span class="sr-only">(current)</span></a>
+                </li>
                 <li {% if menu == 'archive' %}class="active" {% endif %}><a href="/archive">
                         归档
                         <span class="sr-only">(current)</span></a>

@@ -90,6 +90,35 @@ router.get('/search', function (req, res, next) {
     }
 });
 
+router.get('/hot', function (req, res, next) {
+    async.parallel({
+        articles: function (callback) {
+            articleService.findPublishedAll({
+                views: {$gt: 100}
+            }, callback);
+        },
+        tags: function (callback) {
+            articleService.findTags(callback);
+        },
+        user: function (callback) {
+            if (req.session.user)
+                userService.findById(req.session.user._id, callback);
+            else {
+                callback(null, {
+                    favorites: null
+                });
+            }
+        }
+    }, function (err, results) {
+        res.render('hot', {
+            articles: results.articles,
+            favorites: results.user.favorites,
+            tags: results.tags,
+            menu: 'hot'
+        });
+    });
+});
+
 router.get('/archive', function (req, res, next) {
     articleService.groupByMonth(function (err, data) {
         for (var i = 0; i < data.length; i++) {
