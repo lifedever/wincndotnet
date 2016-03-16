@@ -1,5 +1,6 @@
 var express = require('express');
 var async = require('async');
+var superagent = require('superagent')
 var lodash = require('lodash');
 
 var router = express.Router();
@@ -12,11 +13,11 @@ router.get('/:id/redirect', function (req, res, next) {
     var user = req.session.user;
     if (user) {     // 用户已登录，跳转到查看页
         res.send('/p/' + id);
-    }else{  // 用户没登录，跳转到文章源地址
-        articleService.findById(id, function(err, article) {
-            if(err) {
+    } else {  // 用户没登录，跳转到文章源地址
+        articleService.findById(id, function (err, article) {
+            if (err) {
                 next(err);
-            }else{
+            } else {
                 res.send(article.url);
             }
         });
@@ -25,10 +26,10 @@ router.get('/:id/redirect', function (req, res, next) {
 
 router.get('/:id/preview', function (req, res, next) {
     var id = req.params.id;
-    articleService.findById(id, function(err, article) {
-        if(err) {
+    articleService.findById(id, function (err, article) {
+        if (err) {
             next(err);
-        }else{
+        } else {
             res.send(article.summary);
         }
     });

@@ -32,9 +32,8 @@
         {% include 'index-item-desc.swig' %}
         <div class="row margin5-t">
             <div class="col-md-12">
-                <div class="box box-solid box-default box-popover"  id="article-preview-{{ article.id }}" style="display: none;">
+                <div class="box box-solid box-default box-popover" id="article-preview-{{ article.id }}" style="display: none;">
                     <div class="box-body">
-
                     </div>
                 </div>
             </div>

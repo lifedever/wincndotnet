@@ -325,10 +325,10 @@ div.share{
     border-radius: 4px;
     font-size: 12px;
 }
-.box-popover {
+.box.box-solid.box-default.box-popover{
     margin-top: 10px;
+    border: 1px solid #3C8DBC;
 }
-
 .box-popover:after, .box-popover:before {
     bottom: 100%;
     left: 50px;
@@ -348,7 +348,7 @@ div.share{
 }
 .box-popover:before {
     border-color: rgba(210, 214, 222, 0);
-    border-bottom-color: #D2D6DE;
+    border-bottom-color: #3C8DBC;
     border-width: 9px;
     margin-left: -9px;
 }
