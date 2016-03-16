@@ -57,10 +57,13 @@ $('a.article-preview').on('click', function (e) {
     var $this = $(this);
     var target = $this.data('target');
     var url = $this.attr('href');
-    $.get(url, function (data) {
-        $(target).find('div.box-body').html(data||'分享者没有留下任何摘要，请直接点击<b><a class="text-blue" href="{{ article.url }}">查看原文</a></b>获取文章内容');
-        $(target).slideToggle();
+    $(target).slideToggle('normal', function(){
+        $.get(url, function (data) {
+            $(target).find('div.box-body').html(data||'分享者没有留下任何摘要，请直接点击<b><a class="text-blue" href="{{ article.url }}">查看原文</a></b>获取文章内容');
+        });
     });
+
+
 });
 
 //多说公共JS代码 start (一个网页只需插入一次)
