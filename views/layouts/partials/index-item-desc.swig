@@ -1,14 +1,14 @@
 <small>
-    {% if article.tags.length>0 %}
+    {#{% if article.tags.length>0 %}
         {% autoescape %}
             {{ article.tags | tags }}
         {% endautoescape %}
         •
-    {% endif %}
+    {% endif %}#}
 
-    <i class="fa fa-user"></i>
+
     <a href="/u/{{ article._user.username }}">
-        <b>{{ article._user.username }}</b>
+        <b class="red"><i class="fa fa-user"></i> {{ article._user.username }}</b>
     </a>
     分享于 {{ article.created_at | timeFromNow }}
     •
